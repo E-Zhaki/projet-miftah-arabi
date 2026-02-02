@@ -1,0 +1,9 @@
+html, .ma-body {
+    height: 100%;
+}
+
+.ma-body {
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
