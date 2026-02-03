@@ -8,11 +8,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class WelcomeController extends AbstractController
 {
-    #[Route('/', name: 'app_visitor_welcome', methods:['GET'])]
+    #[Route('/', name: 'app_visitor_welcome', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('pages/visitor/welcome/index.html.twig', [
-
         ]);
     }
 }
