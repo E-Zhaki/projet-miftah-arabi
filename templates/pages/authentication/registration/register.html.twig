@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Inscription | Miftah Arabi</title>
+
+        {# SEO #}
+        <meta name="robots" content="index, follow">
+        <meta name="description" content="Inscription sur Miftah Arabi, la plateforme pour apprendre l’arabe de manière simple, progressive et accessible.">
+        <meta name="keywords" content="apprendre l’arabe, arabe littéraire, cours d’arabe, plateforme arabe, Miftah Arabi, débutant, francophone">
+        <meta name="author" content="Zhaki El Ouarroudi">
+        <meta name="publisher" content="Miftah Arabi">
+
+        {# Couleur navigateur (mobile) #}
+        <meta name="theme-color" content="#C9A227">
+
+        {# Favicon #}
+
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <meta name="apple-mobile-web-app-title" content="MyWebSite">
+        <link rel="manifest" href="/site.webmanifest">
+
+        {# Google Font #}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        {# WebpakEncore stylesheets #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {# WebpakEncore javascripts #}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img class= "img-fluid" src="/images/statics/inscription.png" alt="Une image de Miftah Arabi vous invitant à vous inscrire">
+                    </div>
+                    <div class="col-lg-6">
+                        <h1 class="text-center">Inscription</h1>
+                        {{ form_start(registrationForm) }}
+                            <div class="row">
+                                <div class="col-lg-6 mb-3">
+                                    <label for="registration_Form_firstName">Prénom</label>
+                                    {{form_widget(registrationForm.firstName, {'attr':
+                                    {'class':'form-control', 'autofocus':'autofocus'}})}}
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="registration_Form_lastName">Nom</label>
+                                    {{form_widget(registrationForm.lastName, {'attr':
+                                    {'class':'form-control'}})}}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                    <label for="registration_Form_email">Email</label>
+                                    {{form_widget(registrationForm.email, {'attr':
+                                    {'class':'form-control'}})}}
+                            </div>
+                            <div class="mb-3">
+                                    <label for="registration_Form_password_first">Mot de passe</label>
+                                    {{form_widget(registrationForm.password.first, {'attr':
+                                    {'class':'form-control'}})}}
+                            </div>
+                            <div class="mb-3">
+                                    <label for="registration_Form_password_second">Confirmation du mot de passe</label>
+                                    {{form_widget(registrationForm.password.second, {'attr':
+                                    {'class':'form-control'}})}}
+                            </div>
+                             <div class="mb-3">
+                                {{form_widget(registrationForm.agreeTerms)}}
+                                <label for="registration_form_agreeTerms">Lire et accepter <a href="#">les conditions générales d'utilisation"</label>
+                            </div>
+                            <div>
+                                <input type="submit" class= "btn btn-primary w-100 shadow" value="S'inscrire">
+                            </div>
+                        {{ form_end(registrationForm) }}
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+    {# {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %} #}
