@@ -41,59 +41,73 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-
+    <body class='ma-auth-bg'>
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none d-lg-block">
                         <img class= "img-fluid" src="/images/statics/inscription.png" alt="Une image de Miftah Arabi vous invitant à vous inscrire">
                     </div>
-                    <div class="col-lg-6">
-                        <h1 class="text-center">Inscription</h1>
+                    <div class="col-lg-6 d-flex flex-column gap-3 justify-content-center align-items-center">
+                        <h1 class="text-center my-3">Inscription</h1>
+
                         {{ form_start(registrationForm) }}
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
-                                    <label for="registration_Form_firstName">Prénom</label>
+                                    <label for="registration_form_firstName">Prénom</label>
+                                    <div class="text-danger">{{form_errors(registrationForm.firstName)}}</div>
                                     {{form_widget(registrationForm.firstName, {'attr':
                                     {'class':'form-control', 'autofocus':'autofocus'}})}}
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <label for="registration_Form_lastName">Nom</label>
+                                    <label for="registration_form_lastName">Nom</label>
+                                    <div class="text-danger">{{form_errors(registrationForm.lastName)}}</div>
                                     {{form_widget(registrationForm.lastName, {'attr':
                                     {'class':'form-control'}})}}
                                 </div>
                             </div>
                             <div class="mb-3">
-                                    <label for="registration_Form_email">Email</label>
+                                    <label for="registration_form_email">Email</label>
+                                    <div class="text-danger">{{form_errors(registrationForm.email)}}</div>
                                     {{form_widget(registrationForm.email, {'attr':
                                     {'class':'form-control'}})}}
                             </div>
                             <div class="mb-3">
-                                    <label for="registration_Form_password_first">Mot de passe</label>
+                                    <label for="registration_form_password_first">Mot de passe</label>
+                                    <div class="text-danger">{{form_errors(registrationForm.password.first)}}</div>
                                     {{form_widget(registrationForm.password.first, {'attr':
-                                    {'class':'form-control'}})}}
+                                    {'class':'form-control', 'placeholder': 'Au moins 12 caractères'}})}}
+                                    <small><i class="fa-solid fa-circle-exclamation"></i> Au moins une lettre minuscule et majuscule, un chiffre et un caractère spécial.</small>
                             </div>
                             <div class="mb-3">
-                                    <label for="registration_Form_password_second">Confirmation du mot de passe</label>
+                                    <label for="registration_form_password_second">Confirmation du mot de passe</label>
+                                    <div class="text-danger">{{form_errors(registrationForm.password.second)}}</div>
                                     {{form_widget(registrationForm.password.second, {'attr':
                                     {'class':'form-control'}})}}
                             </div>
                              <div class="mb-3">
+                             <div class="text-danger">{{form_errors(registrationForm.agreeTerms)}}</div>
                                 {{form_widget(registrationForm.agreeTerms)}}
-                                <label for="registration_form_agreeTerms">Lire et accepter <a href="#">les conditions générales d'utilisation"</label>
+                                <label for="registration_form_agreeTerms">Lire et accepter <a href="{{path('app_visitor_terms_of_services')}}">les conditions générales d'utilisation</a></label>
                             </div>
                             <div>
-                                <input type="submit" class= "btn btn-primary w-100 shadow" value="S'inscrire">
+                                <input type="submit" formnovalidate class= "btn btn-primary w-100 shadow" value="S'inscrire">
                             </div>
                         {{ form_end(registrationForm) }}
 
+                        
+
+                        <div class="text-center my-3">
+                            <p>Vous avez déjà un compte? <a href="#">Connectez-vous</a></p>
+                            <p><a href="{{path('app_visitor_welcome')}}">Retour à l'accueil</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
         
     </body>
+
 </html>
 
 
@@ -108,3 +122,119 @@
     {# {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %} #}
+
+
+    {# <body class="ma-auth-bg">
+        <main>
+            <div class="container">
+                <div class="row min-vh-100 align-items-center">
+                    
+                
+                    <div class="col-lg-6 d-none d-lg-block text-center">
+                        <img
+                            class="img-fluid"
+                            src="/images/statics/inscription.png"
+                            alt="Illustration invitant à l'inscription sur Miftah Arabi"
+                        >
+                    </div>
+
+                    
+                    <div class="col-lg-6 d-flex flex-column gap-3 justify-content-center align-items-center">
+                        
+                        <h1 class="text-center my-3">Inscription</h1>
+
+                        <div class="w-100" style="max-width: 420px;">
+                            <div class="card shadow-sm border-0 rounded-4 p-4">
+
+                                {{ form_start(registrationForm) }}
+
+                                    {{ form_errors(registrationForm) }}
+
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-3">
+                                            {{ form_label(registrationForm.firstName, 'Prénom') }}
+                                            {{ form_widget(registrationForm.firstName, {
+                                                attr: {
+                                                    class: 'form-control',
+                                                    autofocus: true
+                                                }
+                                            }) }}
+                                            {{ form_errors(registrationForm.firstName) }}
+                                        </div>
+
+                                        <div class="col-lg-6 mb-3">
+                                            {{ form_label(registrationForm.lastName, 'Nom') }}
+                                            {{ form_widget(registrationForm.lastName, {
+                                                attr: { class: 'form-control' }
+                                            }) }}
+                                            {{ form_errors(registrationForm.lastName) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        {{ form_label(registrationForm.email, 'Adresse email') }}
+                                        {{ form_widget(registrationForm.email, {
+                                            attr: { class: 'form-control' }
+                                        }) }}
+                                        {{ form_errors(registrationForm.email) }}
+                                    </div>
+
+                                    <div class="mb-3">
+                                        {{ form_label(registrationForm.password.first, 'Mot de passe') }}
+                                        {{ form_widget(registrationForm.password.first, {
+                                            attr: {
+                                                class: 'form-control',
+                                                placeholder: 'Au moins 12 caractères'
+                                            }
+                                        }) }}
+                                        {{ form_errors(registrationForm.password.first) }}
+                                        <small class="text-muted">
+                                            <i class="fa-solid fa-circle-exclamation"></i>
+                                            Au moins une majuscule, une minuscule, un chiffre et un caractère spécial.
+                                        </small>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        {{ form_label(registrationForm.password.second, 'Confirmation du mot de passe') }}
+                                        {{ form_widget(registrationForm.password.second, {
+                                            attr: { class: 'form-control' }
+                                        }) }}
+                                        {{ form_errors(registrationForm.password.second) }}
+                                    </div>
+
+                                    <div class="form-check mb-3">
+                                        {{ form_widget(registrationForm.agreeTerms, {
+                                            attr: { class: 'form-check-input' }
+                                        }) }}
+                                        {{ form_label(
+                                            registrationForm.agreeTerms,
+                                            "Lire et accepter les conditions générales d'utilisation",
+                                            { label_attr: { class: 'form-check-label' } }
+                                        ) }}
+                                        {{ form_errors(registrationForm.agreeTerms) }}
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100 shadow">
+                                        S'inscrire
+                                    </button>
+
+                                {{ form_end(registrationForm) }}
+
+                            </div>
+                        </div>
+
+                        <div class="text-center my-3">
+                            <p>
+                                Vous avez déjà un compte ?
+                                <a href="#">Connectez-vous</a>
+                            </p>
+                            <p>
+                                <a href="{{ path('app_visitor_welcome') }}">Retour à l'accueil</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body> #}
