@@ -51,6 +51,10 @@
                     <div class="col-lg-6 d-flex flex-column gap-3 justify-content-center align-items-center">
                         <h1 class="text-center my-3">Inscription</h1>
 
+                        {% for flash_error in app.flashes('verify_email_error') %}
+                            <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
+                        {% endfor %}
+
                         {{ form_start(registrationForm) }}
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
@@ -88,7 +92,7 @@
                              <div class="mb-3">
                              <div class="text-danger">{{form_errors(registrationForm.agreeTerms)}}</div>
                                 {{form_widget(registrationForm.agreeTerms)}}
-                                <label for="registration_form_agreeTerms">Lire et accepter <a href="{{path('app_visitor_terms_of_services')}}">les conditions générales d'utilisation</a></label>
+                                <label for="registration_form_agreeTerms">Lire et accepter <a href="{{path('app_visitor_terms_of_service')}}" target="_blank">les conditions générales d'utilisation</a></label>
                             </div>
                             <div>
                                 <input type="submit" formnovalidate class= "btn btn-primary w-100 shadow" value="S'inscrire">
@@ -119,9 +123,7 @@
 
 
 
-    {# {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %} #}
+    
 
 
     {# <body class="ma-auth-bg">

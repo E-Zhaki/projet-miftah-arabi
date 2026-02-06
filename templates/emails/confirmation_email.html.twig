@@ -1,0 +1,38 @@
+<h2>Bienvenue sur Miftah Arabi</h2>
+
+<p>
+    Merci de vous être inscrit sur la plateforme <strong>Miftah Arabi</strong>, dédiée à
+    l'apprentissage de la langue arabe.
+</p>
+
+<p>
+    Afin de finaliser votre inscription et sécuriser votre compte, merci de confirmer
+    votre adresse e-mail en cliquant sur le lien ci-dessous :
+</p>
+
+<p style="margin: 20px 0;">
+    <a href="{{ signedUrl|raw }}"
+       style="display:inline-block;
+              padding:12px 20px;
+              background-color:#a4a41b;
+              color:#ffffff;
+              text-decoration:none;
+              border-radius:6px;
+              font-weight:600;">
+        Confirmer mon adresse e-mail
+    </a>
+</p>
+
+<p>
+    ⚠️ Ce lien expirera dans
+    <strong>{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}</strong>.
+</p>
+
+<p>
+    Si vous n'êtes pas à l'origine de cette inscription, vous pouvez ignorer ce message.
+</p>
+
+<p style="margin-top:30px;">
+    À très bientôt sur la plateforme,<br>
+    <strong>L'équipe Miftah Arabi</strong>
+</p>

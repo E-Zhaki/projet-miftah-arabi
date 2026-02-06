@@ -19,7 +19,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
+    #[Assert\NotBlank(message: 'Le prénom est obligatoire.')]
     #[Assert\Length(
         min: 2,
         max: 255,
@@ -29,7 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
-    #[Assert\NotBlank(message: "Le nom est obligatoire.")]
+    #[Assert\NotBlank(message: 'Le nom est obligatoire.')]
     #[Assert\Length(
         min: 2,
         max: 255,
@@ -48,21 +48,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
-
-
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
     private array $roles = [];
 
-
-
     /**
      * @var string The hashed password
      */
-
-    #[Assert\NotBlank(message: "Le mot de passe est obligatoire.")]
+    #[Assert\NotBlank(message: 'Le mot de passe est obligatoire.')]
     #[Assert\Length(
         min: 12,
         max: 255,
@@ -85,6 +80,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private bool $isVerified = false;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $verifiedAt = null;
 
     public function getId(): ?int
     {
@@ -223,6 +221,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getVerifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->verifiedAt;
+    }
+
+    public function setVerifiedAt(?\DateTimeImmutable $verifiedAt): static
+    {
+        $this->verifiedAt = $verifiedAt;
 
         return $this;
     }

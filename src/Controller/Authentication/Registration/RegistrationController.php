@@ -31,11 +31,14 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $plainPassword */
-            $plainPassword = $form->get('plainPassword')->getData();
+            /** @var string $password */
+            $password = $form->get('password')->getData();
 
             // encode the plain password
-            $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+            $user->setPassword($userPasswordHasher->hashPassword($user, $password));
+            $user->setRoles(['ROLE_USER']);
+            $user->setCreatedAt(new \DateTimeImmutable());
+            $user->setUpdatedAt(new \DateTimeImmutable());
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -45,18 +48,22 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('miftah-arabi@gmail.com', 'Miftah Arabi'))
                     ->to((string) $user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->subject("Vérification de votre compte sur la plateforme lors de l'inscription, sur Miftah Arabi")
+                    ->htmlTemplate('emails/confirmation_email.html.twig')
             );
 
-            // do anything else you need here, like send an email
-
-            return $this->redirectToRoute('app_visitor_welcome');
+            return $this->redirectToRoute('app_register_waiting_for_email_verif');
         }
 
         return $this->render('pages/authentication/registration/register.html.twig', [
             'registrationForm' => $form,
         ]);
+    }
+
+    #[Route('/inscription/en-attente-de-la-verification-du-compte', name: 'app_register_waiting_for_email_verif')]
+    public function waitingForEmailVerif(): Response
+    {
+        return $this->render('pages/authentication/registration/waiting_for_email_verif.html.twig');
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
@@ -84,8 +91,8 @@ class RegistrationController extends AbstractController
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        $this->addFlash('success', 'Votre compte a été vérifié, vous pouvez vous connecter!.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_visitor_welcome');
     }
 }
