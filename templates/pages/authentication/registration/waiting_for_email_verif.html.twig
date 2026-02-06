@@ -1,0 +1,60 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Confirmation d'email | Miftah Arabi{% endblock %}
+
+{% block description %}
+Finalisez votre inscription sur Miftah Arabi : confirmez votre adresse e-mail pour activer votre compte et accéder aux leçons.
+{% endblock %}
+
+{% block keywords %}
+confirmation email, activation compte, inscription, apprendre l'arabe, Miftah Arabi
+{% endblock %}
+
+{% block main %}
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5 text-center">
+
+                        <h1 class="display-6 mb-3">Vérifie ton e-mail</h1>
+
+                        <p class="lead mb-4">
+                            Ton compte est presque prêt. On vient de t'envoyer un e-mail de confirmation.
+                            Clique sur le lien pour activer ton compte.
+                        </p>
+
+                        <div class="alert alert-warning text-start mb-4" role="alert">
+                            <strong>Tu ne vois rien ?</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Vérifie le dossier <strong>spams / indésirables</strong></li>
+                                <li>Assure-toi que l'adresse e-mail est correcte</li>
+                                <li>Attends 1 à 2 minutes (parfois l'e-mail met un peu de temps)</li>
+                            </ul>
+                        </div>
+
+                        <p class="mb-4">
+                            Une fois ton e-mail confirmé, tu pourras te connecter et accéder aux leçons.
+                        </p>
+
+                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                            {# <a href="{{ path('app_login') }}" class="btn btn-primary px-4">
+                                Aller à la connexion
+                            </a> #}
+                            <a href="{{ path('app_visitor_welcome') }}" class="btn btn-outline-secondary px-4">
+                                Retour à l'accueil
+                            </a>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <p class="text-muted mb-0 small">
+                            Si tu as fait une erreur dans ton e-mail, tu peux recommencer l'inscription avec une adresse correcte.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Conditions générales d'utilisation | Miftah Arabi{% endblock %}
+
+{% block description %}
+Conditions générales d'utilisation de la plateforme Miftah Arabi dédiée à l'apprentissage de la langue arabe.
+{% endblock %}
+
+{% block keywords %}
+CGU, conditions générales d'utilisation, Miftah Arabi, plateforme éducative, cours d'arabe, apprentissage arabe
+{% endblock %}
+
+{% block main %}
+<section class="container my-5">
+    <header class="text-center mb-5">
+        <h1 class="display-5">Conditions générales d'utilisation</h1>
+        <p class="lead mt-3">
+            Les présentes conditions générales d'utilisation (CGU) encadrent l'accès et l'utilisation
+            de la plateforme <strong>Miftah Arabi</strong>.
+        </p>
+        <p class="text-muted small">
+            Dernière mise à jour : 06 février 2026
+        </p>
+    </header>
+
+    <article class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4 p-lg-5">
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">1. Objet</h2>
+                <p>
+                    La plateforme <strong>Miftah Arabi</strong> a pour objectif de proposer des contenus pédagogiques
+                    permettant l'apprentissage de la langue arabe à travers des leçons structurées,
+                    des ressources multimédias et des outils d'accompagnement.
+                </p>
+                <p>
+                    Les présentes CGU définissent les règles applicables à toute utilisation du site,
+                    qu'elle soit effectuée par un visiteur ou par un utilisateur disposant d'un compte.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">2. Accès à la plateforme</h2>
+                <p>
+                    L'accès à certaines parties du site est libre et ne nécessite pas de création de compte.
+                    D'autres fonctionnalités, telles que la gestion des favoris, nécessitent une inscription préalable.
+                </p>
+                <p>
+                    L'éditeur se réserve le droit de suspendre temporairement ou définitivement l'accès
+                    à la plateforme en cas de maintenance, de problème technique ou d'utilisation abusive.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">3. Création et gestion du compte utilisateur</h2>
+                <p>
+                    La création d'un compte est gratuite. L'utilisateur s'engage à fournir des informations exactes,
+                    complètes et à jour lors de son inscription.
+                </p>
+                <ul>
+                    <li>Un seul compte est autorisé par adresse email.</li>
+                    <li>L'utilisateur est responsable de la confidentialité de son mot de passe.</li>
+                    <li>Toute action réalisée depuis le compte est réputée effectuée par son titulaire.</li>
+                </ul>
+                <p>
+                    L'utilisateur peut demander la suppression de son compte à tout moment via la page de contact.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">4. Contenus pédagogiques</h2>
+                <p>
+                    Les contenus proposés sur la plateforme (leçons, vidéos, textes, liens externes)
+                    sont fournis à titre pédagogique et informatif.
+                </p>
+                <p>
+                    Certains contenus peuvent provenir de plateformes tierces (ex : vidéos hébergées sur des services externes).
+                    Miftah Arabi ne peut être tenu responsable du contenu publié sur ces plateformes.
+                </p>
+                <p>
+                    Toute reproduction, diffusion ou utilisation des contenus à des fins commerciales
+                    sans autorisation préalable est strictement interdite.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">5. Fonctionnalité « Favoris »</h2>
+                <p>
+                    Les utilisateurs disposant d'un compte peuvent enregistrer des leçons dans une liste de favoris
+                    afin de les retrouver plus facilement.
+                </p>
+                <p>
+                    Les favoris sont strictement personnels et liés au compte utilisateur.
+                    Ils ne constituent pas un droit de propriété sur les contenus.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">6. Responsabilités</h2>
+                <p>
+                    L'éditeur met tout en œuvre pour assurer le bon fonctionnement de la plateforme,
+                    mais ne garantit pas une disponibilité continue et sans interruption.
+                </p>
+                <p>
+                    L'utilisateur reconnaît utiliser le site sous sa responsabilité exclusive
+                    et disposer des compétences et moyens nécessaires pour y accéder.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">7. Données personnelles</h2>
+                <p>
+                    Des données personnelles peuvent être collectées dans le cadre de l'utilisation de la plateforme
+                    (création de compte, formulaire de contact, sécurité).
+                </p>
+                <p>
+                    Conformément à la réglementation en vigueur, l'utilisateur dispose d'un droit d'accès,
+                    de rectification et de suppression de ses données personnelles.
+                </p>
+            </section>
+
+            <section class="mb-0">
+                <h2 class="h4 mb-3">8. Contact</h2>
+                {# <p>
+                    Pour toute question relative aux présentes conditions générales d'utilisation,
+                    l'utilisateur peut contacter l'éditeur via la page
+                    <a href="{{ path('app_visitor_contact') }}">Contact</a>.
+                </p> #}
+                <p class="text-muted small mb-0">
+                    Éditeur : Zhaki El Ouarroudi – Plateforme Miftah Arabi
+                </p>
+            </section>
+
+        </div>
+    </article>
+</section>
+{% endblock %}
