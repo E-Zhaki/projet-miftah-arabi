@@ -8,8 +8,8 @@
 
         {# SEO #}
         <meta name="robots" content="index, follow">
-        <meta name="description" content="Inscription sur Miftah Arabi, la plateforme pour apprendre l’arabe de manière simple, progressive et accessible.">
-        <meta name="keywords" content="apprendre l’arabe, arabe littéraire, cours d’arabe, plateforme arabe, Miftah Arabi, débutant, francophone">
+        <meta name="description" content="Inscription sur Miftah Arabi, la plateforme pour apprendre l'arabe de manière simple, progressive et accessible.">
+        <meta name="keywords" content="apprendre l'arabe, arabe littéraire, cours d'arabe, plateforme arabe, Miftah Arabi, débutant, francophone">
         <meta name="author" content="Zhaki El Ouarroudi">
         <meta name="publisher" content="Miftah Arabi">
 
@@ -55,7 +55,7 @@
                             <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
                         {% endfor %}
 
-                        {{ form_start(registrationForm) }}
+                        {{ form_start(registrationForm, {'attr': {'class':'ma-auth-form'}})}}
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
                                     <label for="registration_form_firstName">Prénom</label>
@@ -102,7 +102,7 @@
                         
 
                         <div class="text-center my-3">
-                            <p>Vous avez déjà un compte? <a href="#">Connectez-vous</a></p>
+                            <p>Vous avez déjà un compte? <a href="{{path('app_login')}}">Connectez-vous</a></p>
                             <p><a href="{{path('app_visitor_welcome')}}">Retour à l'accueil</a></p>
                         </div>
                     </div>
