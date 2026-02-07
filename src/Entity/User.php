@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message: "L'email est obligatoire.")]
     #[Assert\Length(
         max: 255,
-        maxMessage: 'Le prénom doit contenir au maximum {{ limit }} caractères.',
+        maxMessage: "L'email doit contenir au maximum {{ limit }} caractères.",
     )]
     #[Assert\Email(message: "L'email {{ value }} est invalide.")]
     #[ORM\Column(length: 180)]
@@ -65,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         maxMessage: 'Le mot de passe doit contenir au maximum {{ limit }} caractères.',
     )]
     #[Assert\Regex(
-        pattern: '/^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-Ỳ])(?=.*[0-9])(?=.*[^a-zà-ÿA-ZÀ-Ỳ0-9]).{11,255}$/',
+        pattern: '/^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-Ỳ])(?=.*[0-9])(?=.*[^a-zà-ÿA-ZÀ-Ỳ0-9]).{12,255}$/',
         match: true,
         message: "Le mot de passe doit être composé d'au moins une lettre majuscule et minuscule, d'un chiffre et d'un caractère spécial.",
     )]
