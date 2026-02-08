@@ -34,7 +34,7 @@
     - ```symfony console lint:yaml config```
 
 4. Sauvegarder et envoyer le code sur GitHub
-    - Ajouter le code dans la zone de transit
+    - Ajouter le code dans la zone de t ransit
         - ```git add .```
     - Sauvegarder l'application
         - ```git commit -m "Message du commit"```
