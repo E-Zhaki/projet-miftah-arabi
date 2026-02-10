@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Authentication\ResetPassword;
 
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
@@ -20,7 +20,7 @@ use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
-#[Route('/reset-password')]
+#[Route('/réinitialisation-du-mot-de-passe')]
 class ResetPasswordController extends AbstractController
 {
     use ResetPasswordControllerTrait;
@@ -48,7 +48,7 @@ class ResetPasswordController extends AbstractController
             );
         }
 
-        return $this->render('reset_password/request.html.twig', [
+        return $this->render('pages/authentication/reset_password/request.html.twig', [
             'requestForm' => $form,
         ]);
     }
@@ -65,7 +65,7 @@ class ResetPasswordController extends AbstractController
             $resetToken = $this->resetPasswordHelper->generateFakeResetToken();
         }
 
-        return $this->render('reset_password/check_email.html.twig', [
+        return $this->render('pages/authentication/reset_password/check_email.html.twig', [
             'resetToken' => $resetToken,
         ]);
     }
@@ -158,8 +158,8 @@ class ResetPasswordController extends AbstractController
         $email = (new TemplatedEmail())
             ->from(new Address('miftah-arabi@gmail.com', 'Miftah Arabi'))
             ->to((string) $user->getEmail())
-            ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
+            ->subject('Demande de réinitialisation de votre mot de passe sur la plateforme Miftah Arabi')
+            ->htmlTemplate('emails/password_request_email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
             ])
