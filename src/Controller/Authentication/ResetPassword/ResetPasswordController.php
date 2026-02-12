@@ -27,7 +27,7 @@ class ResetPasswordController extends AbstractController
 
     public function __construct(
         private ResetPasswordHelperInterface $resetPasswordHelper,
-        private EntityManagerInterface $entityManager
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -115,6 +115,9 @@ class ResetPasswordController extends AbstractController
 
             // Encode(hash) the plain password, and set it.
             $user->setPassword($passwordHasher->hashPassword($user, $plainPassword));
+
+            // $this->entityManager->persist($user);
+            // Persist Pas obligatoire dans le cas de la modification mais obligatoire pour l'inscription
             $this->entityManager->flush();
 
             // The session is cleaned up after the password has been changed.
@@ -123,7 +126,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('reset_password/reset.html.twig', [
+        return $this->render('pages/authentication/reset_password/reset.html.twig', [
             'resetForm' => $form,
         ]);
     }

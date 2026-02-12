@@ -26,6 +26,7 @@
                 {{ form_start(requestForm) }}
                     <div class="mb-3">
                         <label for="reset_password_request_form_email">Votre email</label>
+                        <div class="text-danger">{{ form_errors(requestForm.email) }}</div>
                         {{ form_widget(requestForm.email, {'attr': {'class':'form-control', 'autofocus':'autofocus'}}) }}
                         <small>
                             Entrez votre email, et nous vous enverrons le lien de réinitialisation du mot de passe.

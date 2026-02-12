@@ -9,8 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
-use Symfony\Component\Validator\Constraints\PasswordStrength;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ChangePasswordFormType extends AbstractType
 {
@@ -19,31 +18,26 @@ class ChangePasswordFormType extends AbstractType
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'options' => [
-                    'attr' => [
-                        'autocomplete' => 'new-password',
-                    ],
-                ],
                 'first_options' => [
                     'constraints' => [
                         new NotBlank([
-                            'message' => 'Please enter a password',
+                            'message' => 'Le nouveau mot de passe est obligatoire.',
                         ]),
                         new Length([
                             'min' => 12,
-                            'minMessage' => 'Your password should be at least {{ limit }} characters',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
+                            'max' => 255,
+                            'minMessage' => 'Le mot de passe doit contenir minimum {{ limit }} caractères',
+                            'maxMessage' => 'Le mot de passe doit contenir maximum {{ limit }} caractères',
                         ]),
-                        new PasswordStrength(),
-                        new NotCompromisedPassword(),
+
+                        new Regex([
+                            'pattern' => '/^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-Ỳ])(?=.*[0-9])(?=.*[^a-zà-ÿA-ZÀ-Ỳ0-9]).{12,255}$/',
+                            'match' => true,
+                            'message' => "Le mot de passe doit être composé d'au moins une lettre majuscule et minuscule, d'un chiffre et d'un caractère spécial.",
+                        ]),
                     ],
-                    'label' => 'New password',
                 ],
-                'second_options' => [
-                    'label' => 'Repeat Password',
-                ],
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Le mot de passe doit être identique à sa confirmation.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
