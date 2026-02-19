@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\LessonRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Attribute as Vich;
 
 #[Vich\Uploadable]
@@ -20,35 +22,62 @@ class Lesson
     #[ORM\ManyToOne(inversedBy: 'lessons')]
     private ?User $user = null;
 
+    #[Assert\NotBlank(message: 'La catégorie est obligatoire.')]
+    #[Assert\Type(
+        type: Category::class,
+        message: 'La catégorie est invalide.',
+    )]
     #[ORM\ManyToOne(inversedBy: 'lessons')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[Assert\NotBlank(message: 'Le titre est obligatoire.')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le titre ne doit pas dépasser {{ limit }} caractères.',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Gedmo\Slug(fields: ['title'])]
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[Assert\NotBlank(message: 'Le description est obligatoire.')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'La description ne doit pas dépasser {{ limit }} caractères.',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Les mots clés ne doit pas dépasser {{ limit }} caractères.',
+    )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $keywords = null;
 
     #[ORM\Column]
     private ?bool $isPublished = false;
 
-    // NOTE: This is not a mapped field of entity metadata, just a simple property.
+    #[Assert\File(
+        maxSize: '4M',
+        extensions: ['png', 'jpeg', 'jpg', 'webp'],
+        maxSizeMessage: "La taille du fichier est trop grande ({{ size }} {{ suffix }}). L'image ne doit pas dépasser {{ limit }} {{ suffix }}.",
+        extensionsMessage: "Seuls les formats 'png', 'jpeg', 'jpg', 'webp' sont autorisés.",
+    )]
     #[Vich\UploadableField(mapping: 'lessons', fileNameProperty: 'image')]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true, unique: true)]
     private ?string $image = null;
 
+    #[Assert\NotBlank(message: 'Le contenu est obligatoire.')]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[Assert\NotBlank(message: 'Veuillez sélectionner un niveau.')]
     #[ORM\Column(length: 255)]
     private ?string $level = null;
 

@@ -5,8 +5,9 @@ namespace App\Controller\Admin\Lesson;
 use App\Entity\Lesson;
 use App\Form\Admin\LessonFormType;
 use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -15,6 +16,7 @@ final class LessonController extends AbstractController
 {
     public function __construct(
         private readonly CategoryRepository $categoryRepository,
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -38,7 +40,18 @@ final class LessonController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd('yes');
+            $admin = $this->getUser();
+
+            $lesson->setUser($admin);
+            $lesson->setCreatedAt(new \DateTimeImmutable());
+            $lesson->setUpdatedAt(new \DateTimeImmutable());
+
+            $this->entityManager->persist($lesson);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'La leçon a été ajoutée avec succés.');
+
+            return $this->redirectToRoute('app_admin_lesson_index');
         }
 
         return $this->render('pages/admin/lesson/create.html.twig', [

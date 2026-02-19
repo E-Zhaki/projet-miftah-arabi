@@ -28,12 +28,12 @@
                         {{ form_widget(lessonForm.description, {'attr': {'class':'form-control'}})}}
                     </div>
                     <div class="mb-3">
-                        <label for="lesson_form_keywords">Mots clés <span class='text-danger'>*</span></label>
+                        <label for="lesson_form_keywords">Mots clés</label>
                         <div class="text-danger">{{form_errors(lessonForm.keywords)}}</div>
                         {{ form_widget(lessonForm.keywords, {'attr': {'class':'form-control'}})}}
                     </div>
                     <div class="mb-3">
-                        <label for="lesson_form_level">Niveau</label>
+                        <label for="lesson_form_level">Niveau <span class='text-danger'>*</span></label>
                         <div class="text-danger">{{form_errors(lessonForm.level)}}</div>
                         {{ form_widget(lessonForm.level, {'attr': {'class':'form-control'}})}}
                     </div>
