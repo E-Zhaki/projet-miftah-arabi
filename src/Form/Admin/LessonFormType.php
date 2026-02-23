@@ -43,9 +43,9 @@ class LessonFormType extends AbstractType
             ->add('content', TextareaType::class)
             ->add('level', ChoiceType::class, [
                 'choices' => [
-                    'Débutant' => 'beginner',
-                    'Intermédiaire' => 'intermediate',
-                    'Avancé' => 'advanced',
+                    'Débutant' => 'Débutant',
+                    'Intermédiaire' => 'Intermédiaire',
+                    'Avancé' => 'Avancé',
                 ],
                 'placeholder' => 'Choisir un niveau',
             ])

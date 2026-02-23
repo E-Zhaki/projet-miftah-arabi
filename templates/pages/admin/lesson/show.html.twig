@@ -1,0 +1,35 @@
+{% extends "themes/base_admin.html.twig" %}
+
+{% block title %}Lire l'article-{{ lesson.id }}: {{lesson.title}}{% endblock %}
+
+{% block description %}{{lesson.description}}{% endblock %}
+
+{% block main %}
+
+  
+    
+    <div class="container">
+        <div class="text-center">
+            {% if lesson.image %}
+                <img class="img-fluid" src="{{ vich_uploader_asset(lesson, 'imageFile') }}" alt="{{ lesson.title }}">
+            {% endif %}
+
+            <h1 class="text-center my-3 display-6">{{lesson.title}}</h1>
+
+            <div class="my-3">
+                <small>Niveau {{lesson.level}}</small> <br>
+                <small>Créé le {{lesson.createdAt|format_date}}</small> <br>
+                <small>Modifié le {{lesson.updatedAt|format_date}}</small> <br>
+                {% if lesson.isPublished %}
+                <small>Publié le {{lesson.publishedAt|format_date}}</small> <br>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="my-4">
+            {{lesson.content}}
+        </div>
+    </div>
+
+{% endblock %}
+

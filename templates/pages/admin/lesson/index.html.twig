@@ -35,34 +35,73 @@
         <a href="{{path('app_admin_lesson_create')}}" class="btn btn-primary shadow"><i class="fa-solid fa-plus"></i> Nouvelle leçon</a>
     </div>
 
-    {# <div class="table-responsive">
+    <div class="table-responsive">
         <table id="myTable" class="table table-striped table-hover table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <th>Nom</th>
-                    <th>Slug</th>
-                    <th>Créée le</th>
-                    <th>Modifiée le</th>
+                    <th>Image</th>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                    <th>Niveau</th>
+                    <th>Statut</th>
+                    <th>Contenu</th>
+                    <th>Créé le</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
-                {% for category in categories %}
+                {% for lesson in lessons %}
                     <tr>
-                        <td>{{category.name}}</td>
-                        <td>{{category.slug}}</td>
-                        <td>{{category.createdAt|format_date()}}</td>
-                        <td>{{category.updatedAt|format_date()}}</td>
-                        <td class="d-flex justify-content-center align-items-center gap-1">
-                            <a href="{{path('app_admin_category_edit', {'id':category.id})}}" class= "btn btn-sm btn-secondary">Modifier</a>
-                            <form action="{{path('app_admin_category_delete', {'id':category.id})}}" method="post">
-                                <input type="hidden" name="csrf_token" value="{{csrf_token('category-'~category.id)}}">
-                                <input type="submit" class="btn btn-sm btn-danger" value="Supprimer" onclick="return confirm('Confirmer ma suppression de cette catégorie?')">
-                            </form>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-center align-items-center gap-1">
+                                {% if lesson.image %}
+                                    <img  src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('admin_lesson_thumb') }}" alt="{{ lesson.title }}">
+                                {% else %}
+                                    <p class="text-center">---</p>
+                                {% endif %}
+                            </div>
                         </td>
+                       <td>{{lesson.title}}</td>
+                       <td>{{lesson.category.name}}</td>
+                       <td>{{lesson.level}}</td>
+                        <td class="align-middle">
+                        <div class="d-flex flex-column justify-content-center align-items-center gap-1 text-center">
+                            {% if lesson.isPublished %}
+                                <p>Publié le {{lesson.publishedAt|format_date()}}<p>
+                            {% else %}
+                                <p>Non publié</p>
+                            {% endif %}
+                            <form action="{{path('app_admin_lesson_publish', {'id':lesson.id})}}" method="post">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token('publish-lesson-'~lesson.id)}}">
+                                <div class="form-check form-switch">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="checkbox" 
+                                        role="switch"
+                                        onclick="return confirm('Confirmer cette action?')"
+                                        onchange="this.form.submit();"
+                                        {{ lesson.isPublished ? 'checked' : '' }}
+                                    >
+                                </div>
+                            </form>
+                        </div>  
+                        </td>
+                       <td>
+                            <a href="{{path('app_admin_lesson_show', {'id':lesson.id})}}" class="btn btn-sm btn-dark">Lire</a>
+                       </td>
+                       <td>{{lesson.createdAt|format_date()}}</td>
+                       <td class="align-middle">
+                        <div class="d-flex justify-content-center align-items-center gap-1">
+                            <a href="{{path('app_admin_lesson_edit', {'id':lesson.id})}}" class="btn btn-sm btn-secondary">Modifier</a>
+                            <form action="{{path('app_admin_lesson_delete', {'id':lesson.id})}}" method="post">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token('delete-lesson-'~lesson.id)}}">
+                                <input type="submit" class="btn btn-sm btn-danger" value="Supprimer" onclick="return confirm('Confirmer la suppression de cet leçon?')">
+                            </form>
+                       </div>
+                       </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </div> #}
+    </div>
 {% endblock %}
