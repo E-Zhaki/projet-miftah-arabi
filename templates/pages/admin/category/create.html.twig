@@ -2,11 +2,11 @@
 
 {% block title %}Nouvelle catégorie{% endblock %}
 
-{% block description %}Ajoutez une nouvelle catégories à la liste{% endblock %}
+{% block description %}Ajoutez une nouvelle catégorie à la liste{% endblock %}
 
 {% block main %}
 
-    <h1 class="text-center my-3 display-5">Nouvelles catégorie</h1>
+    <h1 class="text-center my-3 display-5">Nouvelle catégorie</h1>
 
     <div class="container">
         <div class="row">
@@ -18,7 +18,7 @@
                         {{ form_widget(categoryForm.name, {'attr': {'class':'form-control', 'autofocus':'autofocus'}})}}
                     </div>
                     <div>
-                        <input formnovalidate type="submit" class="btn btn-primary shadow">
+                        <input formnovalidate type="submit" class="btn btn-primary shadow" value= "Envoyer">
                     </div>
                     {{form_end(categoryForm)}}
             </div>

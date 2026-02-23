@@ -1,0 +1,69 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Modifier la leçon-{{ lesson.id }}: {{lesson.title}}{% endblock %}
+
+{% block description %}{{lesson.description}}{% endblock %}
+
+{% block main %}
+
+    <h1 class="text-center my-3 display-5">Modifier cette leçon</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-6 mx-auto bg-light shadow p-">
+                {{form_start(lessonForm)}}
+                    <div class="mb-3">
+                        <label for="lesson_form_title">Titre <span class='text-danger'>*</span></label>
+                        <div class="text-danger">{{form_errors(lessonForm.title)}}</div>
+                        {{ form_widget(lessonForm.title, {'attr': {'class':'form-control', 'autofocus':'autofocus'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="lesson_form_category">Catégorie <span class='text-danger'>*</span></label>
+                        <div class="text-danger">{{form_errors(lessonForm.category)}}</div>
+                        {{ form_widget(lessonForm.category, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="lesson_form_description">Description <span class='text-danger'>*</span></label>
+                        <div class="text-danger">{{form_errors(lessonForm.description)}}</div>
+                        {{ form_widget(lessonForm.description, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="lesson_form_keywords">Mots clés</label>
+                        <div class="text-danger">{{form_errors(lessonForm.keywords)}}</div>
+                        {{ form_widget(lessonForm.keywords, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="lesson_form_level">Niveau <span class='text-danger'>*</span></label>
+                        <div class="text-danger">{{form_errors(lessonForm.level)}}</div>
+                        {{ form_widget(lessonForm.level, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6 text-center">
+                            {% if lesson.image %}
+                                <img  src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('admin_lesson_thumb') }}" alt="{{ lesson.title }}">
+                            {% else %}
+                                <p>Aucune image existante</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                        <label for="lesson_form_imageFile">Image</label>
+                        <div class="text-danger">{{form_errors(lessonForm.imageFile)}}</div>
+                        {{ form_widget(lessonForm.imageFile, {'attr': {'class':'form-control mb-3'}})}}
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lesson_form_content">Contenu</label>
+                        <div class="text-danger">{{form_errors(lessonForm.content)}}</div>
+                        {{ form_widget(lessonForm.content, {'attr': {'class':'form-control', 'rows':5}})}}
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-primary shadow" value='Sauvegarder'>
+                    </div>
+                    {{form_end(lessonForm)}}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
