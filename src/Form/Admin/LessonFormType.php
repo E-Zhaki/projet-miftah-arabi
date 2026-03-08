@@ -4,6 +4,7 @@ namespace App\Form\Admin;
 
 use App\Entity\Category;
 use App\Entity\Lesson;
+use App\Entity\Tag;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -23,6 +24,12 @@ class LessonFormType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'placeholder' => 'Sélectionner une catégorie',
+            ])
+            ->add('tags', EntityType::class, [
+                'class' => Tag::class,
+                'choice_label' => 'name',
+                'expanded' => false,
+                'multiple' => true,
             ])
             ->add('description', TextType::class)
             ->add('keywords', TextType::class)

@@ -26,8 +26,22 @@
             </div>
         </div>
 
-        <div class="my-4">
-            {{lesson.content}}
+        <div class="my-5">
+
+            <p>La catégories: <span class="badge text-bg-primary">{{lesson.category.name}}</span> </p>
+
+            {% if lesson.tags is not empty %}
+                <p>
+                    Les tags: 
+                    {% for tag in lesson.tags %}
+                        <span class="badge text-bg-secondary">{{tag.name}}</span> 
+                    {% endfor %}
+                </p>
+            {% endif %}
+            
+            
+
+            {{lesson.content|raw}}
         </div>
     </div>
 
