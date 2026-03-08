@@ -42,6 +42,7 @@
                     <th>Image</th>
                     <th>Titre</th>
                     <th>Catégorie</th>
+                    <th>Tags</th>
                     <th>Niveau</th>
                     <th>Statut</th>
                     <th>Contenu</th>
@@ -62,7 +63,12 @@
                             </div>
                         </td>
                        <td>{{lesson.title}}</td>
-                       <td>{{lesson.category.name}}</td>
+                       <td><span class="badge text-bg-primary">{{lesson.category.name}}</span> </td>
+                       <td class="text-center">
+                            {% for tag in lesson.tags %}
+                                <span class="badge text-bg-secondary">{{tag.name}}</span> 
+                            {% endfor %}
+                       </td>
                        <td>{{lesson.level}}</td>
                         <td class="align-middle">
                         <div class="d-flex flex-column justify-content-center align-items-center gap-1 text-center">
