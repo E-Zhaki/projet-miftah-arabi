@@ -1,35 +1,41 @@
 {% extends "themes/base_admin.html.twig" %}
 
-{% block title %}Modification de votre profil{% endblock %}
+{% block title %}
+    Modification du profil
+{% endblock %}
 
-{% block description %}Modifiez les information de votre profil{% endblock %}
+{% block description %}
+    Modifiez les informations de votre profil
+{% endblock %}
 
 {% block main %}
     <h1 class="text-center my-3 display-5">Modification du profil</h1>
 
-    {% include 'components/_alert.html.twig' %}
-
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-10 col-lg-5 mx-auto p-4 shadow">
-                    {{form_start(profilForm)}}
-                        <div class="mb-3">
-                            <label for="">Prénom</label>
-                            {{form_widget(profilForm.firstName, {'attr': {'class':'form-control', 'autofocus':'autofocus'}})}}
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Nom</label>
-                            {{form_widget(profilForm.lastName, {'attr': {'class':'form-control'}})}}
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Email</label>
-                            {{form_widget(profilForm.email, {'attr': {'class':'form-control'}})}}
-                        </div>
-                        <div>
-                            <input type="submit" class="btn btn-primary shadow w-100" value="Modifier">
-                        </div>
-                    {{form_end(profilForm)}}
-                </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10 col-lg-5 mx-auto p-4 shadow">
+                {{form_start(profileForm)}}
+                    <div class="mb-3">
+                        <label for="profile_form_firstName">Prénom</label>
+                        <div class="text-danger">{{form_errors(profileForm.firstName)}}</div>
+                        {{form_widget(profileForm.firstName, {'attr': {'class':'form-control', 'autofocus':'autofocus'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="profile_form_lastName">Nom</label>
+                        <div class="text-danger">{{form_errors(profileForm.lastName)}}</div>
+                        {{form_widget(profileForm.lastName, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="profile_form_email">Email</label>
+                        <div class="text-danger">{{form_errors(profileForm.email)}}</div>
+                        {{form_widget(profileForm.email, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-primary shadow w-100" value="Modifier">
+                    </div>
+                {{form_end(profileForm)}}
             </div>
         </div>
+    </div>
+
 {% endblock %}

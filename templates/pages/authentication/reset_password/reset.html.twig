@@ -27,7 +27,8 @@ réinitialisation mot de passe, nouveau mot de passe, sécurité compte, changem
                         <label for="change_password_form_plainPassword_first">Nouveau mot de passe</label>
                         <div class="text-danger">{{form_errors(resetForm.plainPassword.first)}}</div>
                         {{form_widget(resetForm.plainPassword.first, {'attr': {'class':'form-control', 'placeholder': 'Au moins 12 caractères', 'autofocus':'autofocus'}})}}
-                        <small>Au moins une lettre minuscule, majuscule, un chiffre et un caractère spécial.</small>                    </div>
+                        <small>Au moins une lettre minuscule, majuscule, un chiffre et un caractère spécial.</small>                    
+                    </div>
                     <div class="mb-3">
                         <label for="change_password_form_plainPassword_second">Confirmation du nouveau mot de passe</label>
                         <div class="text-danger">{{form_errors(resetForm.plainPassword.second)}}</div>
