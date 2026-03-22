@@ -10,22 +10,98 @@ Accédez aux leçons d'arabe de Miftah Arabi : alphabet, lecture, vocabulaire et
 leçons arabe, cours d'arabe, arabe littéraire, apprendre l'arabe, alphabet arabe, Miftah Arabi
 {% endblock %}
 
+{% block knp_paginator %}
+	{{ knp_pagination_rel_links(lessons) }}
+{% endblock %}
+
 {% block main %}
-    <section class="container my-5">
-        <h1 class="text-center display-5 mb-4">Leçons</h1>
+        {# {% include 'components/visitor/_header_visitor.html.twig' with {'h1': "Liste des leçons"} %} #}
 
-        <p class="text-center lead mb-5">
-            Des leçons progressives pour apprendre l'arabe pas à pas,
-            du niveau débutant au niveau intermédiaire.
-        </p>
+        <div class="container my-5">
+			<div class="row text-center">
+				<div class="col-md-6">
+					<div class="dropdown my-2">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Les catégories
+						</a>
 
-        {# Exemple de structure future #}
-        {# 
-        <div class="row">
-            <div class="col-md-4">Alphabet</div>
-            <div class="col-md-4">Lecture & prononciation</div>
-            <div class="col-md-4">Vocabulaire & grammaire</div>
+						<ul class="dropdown-menu">
+							{% if categories is not empty %}
+								{% for category in categories %}
+									<li>
+										<a class="dropdown-item" href="#">
+											{{category.name}} ({{category.lessons|length}} leçon{{category.lessons|length > 1 ? 's' : ''}})
+										</a>
+									</li>
+								{% endfor %}
+							{% else %}
+								<li><a class="dropdown-item" href="#">Aucune catégorie</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="dropdown my-2">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Les tags
+						</a>
+
+						<ul class="dropdown-menu">
+							{% if tags is not empty %}
+								{% for tag in tags %}
+									<li>
+										<a class="dropdown-item" href="#">
+											{{tag.name}} ({{tag.lessons|length}} leçon{{tag.lessons|length > 1 ? 's' : ''}})
+										</a>
+									</li>
+								{% endfor %}
+							{% else %}
+								<li><a class="dropdown-item" href="#">Aucun Tag</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="container my-5">
+				<div class="row">
+					<div class="col-md-12 col-lg-8 mx-auto">
+						{% for lesson in lessons %}
+							<div class="card shadow my-5">
+								<div class="row g-0">
+									<div class="col-md-4">
+										{% if lesson.image %}
+											<img class="w-100 h-100 rounded-start" src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}" alt="{{ lesson.title }}">
+										{% else %}
+											<img class="w-100 h-100" src="/images/statics/default-lesson-image.png" alt="{{lesson.title}}">
+										{% endif %}
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<h5 class="card-title">{{lesson.title|u.truncate('80', '...')}}</h5>
+											<p class="card-text">Catégorie: <span class="badge text-bg-info">{{lesson.category.name}}</span></p>
+											{% if lesson.tags is not empty %}
+											<p class="card-text">
+												Tags: 
+												{% for tag in lesson.tags %}
+													<span class="badge text-bg-secondary">{{tag.name}}</span>
+												{% endfor %}
+											</p>
+											{% endif %}
+											<p class="card-text"><small class="text-body-secondary">Publié {{lesson.publishedAt|ago}}</small></p>
+											<a href="" class="btn btn-primary shadow">Lire la leçon</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+
+						{# display navigation #}
+						<div class="d-flex justify-content-center align-items-center">
+							{{ knp_pagination_render(lessons) }}
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
-        #}
-    </section>
 {% endblock %}
