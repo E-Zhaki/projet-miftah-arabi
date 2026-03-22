@@ -11,7 +11,7 @@ liip_imagine:
         cache : ~
 
         # the name of the "filter set"
-        admin_post_thumb :
+        admin_lesson_thumb :
 
             # adjust the image quality to 75%
             quality : 75
@@ -23,7 +23,7 @@ liip_imagine:
                 # to crop the image when the size ratio of the input differs
                 thumbnail  : { size : [100, 100], mode : outbound }
 
-        visitor_post_thumb :
+        visitor_lesson_thumb :
 
             # adjust the image quality to 75%
             quality : 100

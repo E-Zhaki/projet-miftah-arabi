@@ -2,97 +2,116 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{% endblock %} - Plateforme langue arabe</title>
+        <title>{% block title %}{% endblock %} - Miftah Arabi</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {#SEO#}
-
+        {# SEO #}
         <meta name="robots" content="index, follow">
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
-        <meta name="author" content="Zhaki El ouarroudi">
-        <meta name="publisher" content="DWWM22">
+        <meta name="author" content="Zhaki El Ouarroudi">
+        <meta name="publisher" content="Miftah Arabi">
         <meta name="theme-color" content="#cbcbb1">
 
-
         {# Favicon #}
-
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
         <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <meta name="apple-mobile-web-app-title" content="MyWebSite">
         <link rel="manifest" href="/site.webmanifest">
 
         {# Font Awesome #}
         {% block font_awesome %}{% endblock %}
 
         {# Google Font #}
-
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        {# WebpakEncore stylesheets #}
+        {# Webpack Encore stylesheets #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {# WebpakEncore javascripts #}
+        {# Webpack Encore javascripts #}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
-         {% block knp_paginator %}{% endblock %}
-
+        {% block knp_paginator %}{% endblock %}
+        {% block j_query %}{% endblock %}
+        {% block javascripts_added %}{% endblock %}
     </head>
-    <body class='ma-body'>
+
+    <body class="ma-body">
+
+        {% set clientPathInfo = app.request.pathInfo %}
 
         {# Navbar #}
         <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{path('app_visitor_welcome')}}">MA</a>
+                <a class="navbar-brand" href="{{ path('app_visitor_welcome') }}">MA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{path('app_visitor_welcome')}}">Accueil</a>
+                            <a class="nav-link {{ clientPathInfo == path('app_visitor_welcome') ? 'active' : '' }}" {{ clientPathInfo == path('app_visitor_welcome') ? 'aria-current="page"' : '' }} href="{{ path('app_visitor_welcome') }}">
+                                Accueil
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_visitor_welcome')}}#about-me">Qui suis-je?</a>
+                            <a class="nav-link" href="{{ path('app_visitor_welcome') }}#about-me">
+                                Qui suis-je ?
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_visitor_lesson_index')}}">Leçons</a>
+                            <a class="nav-link {{ clientPathInfo == path('app_visitor_lesson_index') ? 'active' : '' }}" {{ clientPathInfo == path('app_visitor_lesson_index') ? 'aria-current="page"' : '' }} href="{{ path('app_visitor_lesson_index') }}">
+                                Leçons
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_visitor_contact_index')}}">Contact</a>
+                            <a class="nav-link {{ clientPathInfo == path('app_visitor_contact_index') ? 'active' : '' }}" {{ clientPathInfo == path('app_visitor_contact_index') ? 'aria-current="page"' : '' }} href="{{ path('app_visitor_contact_index') }}">
+                                Contact
+                            </a>
                         </li>
                     </ul>
+
                     <ul class="navbar-nav ms-auto">
                         {% if app.user %}
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{path('app_admin_home')}}">Espace admin</a>
+                                    <a class="btn btn-outline-primary mx-md-2 my-2 shadow" href="{{ path('app_admin_home') }}">
+                                        Espace admin
+                                    </a>
                                 </li>
                             {% endif %}
-                            
+
                             {% if is_granted('ROLE_USER') %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{path('app_user_home')}}">Espace privé</a>
+                                    <a class="btn btn-outline-primary mx-md-2 my-2 shadow" href="{{ path('app_user_home') }}">
+                                        Espace privé
+                                    </a>
                                 </li>
                             {% endif %}
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+                                <a class="btn btn-primary mx-md-2 my-2 shadow" href="{{ path('app_logout') }}">
+                                    Déconnexion
+                                </a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+                                <a class="btn btn-outline-primary mx-md-2 my-2 shadow" href="{{ path('app_login') }}">
+                                    Connexion
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
+                                <a class="btn btn-primary mx-md-2 my-2 shadow" href="{{ path('app_register') }}">
+                                    Inscription
+                                </a>
                             </li>
                         {% endif %}
                     </ul>
@@ -107,7 +126,7 @@
 
         {# Footer #}
         <footer>
-            <p class="text-center">DWWM</p>
+            <p class="text-center">Miftah Arabi</p>
         </footer>
     </body>
 </html>
