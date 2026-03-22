@@ -16,15 +16,34 @@ class LessonRepository extends ServiceEntityRepository
         parent::__construct($registry, Lesson::class);
     }
 
+    /**
+     * Cette méthode filtre les Lessons en fonction du tag précisé.
+     *
+     * @return array<int, Lesson>
+     */
+    public function filterLessonsByTag(int $tag_id): array
+    {
+        return $this->createQueryBuilder('p')
+                    ->join('p.tags', 't')
+                    ->select('p')
+                    ->where('t.id = :id')
+                    ->andWhere('p.isPublished = :val')
+                    ->setParameter('id', $tag_id)
+                    ->setParameter('val', true)
+                    ->orderBy('p.publishedAt', 'DESC')
+                    ->getQuery()
+                    ->getResult();
+    }
+
     //    /**
     //     * @return Lesson[] Returns an array of Lesson objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('l.id', 'ASC')
+    //            ->orderBy('p.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
@@ -33,8 +52,8 @@ class LessonRepository extends ServiceEntityRepository
 
     //    public function findOneBySomeField($value): ?Lesson
     //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()
