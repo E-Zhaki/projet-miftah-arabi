@@ -35,24 +35,20 @@ class LessonFormType extends AbstractType
             ->add('keywords', TextType::class)
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
-
                 'allow_delete' => true,
                 'delete_label' => 'Supprimer l\'image actuelle ?',
-
                 'download_label' => false,
                 'download_uri' => false,
-
                 'image_uri' => false,
-
                 'imagine_pattern' => false,
                 'asset_helper' => false,
             ])
             ->add('content', TextareaType::class)
             ->add('level', ChoiceType::class, [
                 'choices' => [
-                    'Débutant' => 'Débutant',
-                    'Intermédiaire' => 'Intermédiaire',
-                    'Avancé' => 'Avancé',
+                    'Débutant' => 'debutant',
+                    'Intermédiaire' => 'intermediaire',
+                    'Avancé' => 'avance',
                 ],
                 'placeholder' => 'Choisir un niveau',
             ])
