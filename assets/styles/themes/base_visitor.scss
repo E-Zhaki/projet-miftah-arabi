@@ -3,7 +3,8 @@ html, .ma-body {
 }
 
 .ma-body {
-
+    background-color: $ma-body-bg;
+    color: $ma-text-color;
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
