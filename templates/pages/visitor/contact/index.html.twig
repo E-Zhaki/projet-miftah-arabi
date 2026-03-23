@@ -15,74 +15,82 @@ contact arabe, apprendre l'arabe, cours d'arabe, plateforme arabe, Miftah Arabi
 {% endblock %}
 
 {% block main %}
-    {% include 'components/visitor/_header_visitor.html.twig' with {'h1': 'Contactez-moi'} %}
+    <section class="page-banner">
+        <div class="container text-center">
+            <span class="section-subtitle section-subtitle-light">Contact</span>
+            <h1 class="page-banner-title mt-2">Contactez-moi</h1>
+        </div>
+    </section>
 
-    <div class="container my-5">
-        <div class="row g-5">
-            <div class="col-lg-6">
-                {% include 'components/_alert.html.twig' %}
+    <section class="contact-section">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-6">
+                    {% include 'components/_alert.html.twig' %}
 
-                {{ form_start(contactForm) }}
-                    <div class="mb-3">
-                        <label class="form-label">Nom <span class="text-danger">*</span></label>
-                        <div class="text-danger">{{ form_errors(contactForm.name) }}</div>
-                        {{ form_widget(contactForm.name, {'attr': {'class': 'form-control', 'autofocus': 'autofocus'}}) }}
+                    <div class="contact-form-card">
+                        {{ form_start(contactForm) }}
+                            <div class="mb-3">
+                                <label class="form-label">Nom <span class="text-danger">*</span></label>
+                                <div class="text-danger small">{{ form_errors(contactForm.name) }}</div>
+                                {{ form_widget(contactForm.name, {'attr': {'class': 'form-control contact-input', 'autofocus': 'autofocus'}}) }}
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email <span class="text-danger">*</span></label>
+                                <div class="text-danger small">{{ form_errors(contactForm.email) }}</div>
+                                {{ form_widget(contactForm.email, {'attr': {'class': 'form-control contact-input'}}) }}
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Message <span class="text-danger">*</span></label>
+                                <div class="text-danger small">{{ form_errors(contactForm.message) }}</div>
+                                {{ form_widget(contactForm.message, {'attr': {'class': 'form-control contact-textarea', 'rows': 7}}) }}
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-ma w-100">
+                                Envoyer
+                            </button>
+                        {{ form_end(contactForm) }}
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Email <span class="text-danger">*</span></label>
-                        <div class="text-danger">{{ form_errors(contactForm.email) }}</div>
-                        {{ form_widget(contactForm.email, {'attr': {'class': 'form-control'}}) }}
+                <div class="col-lg-6">
+                    <div class="contact-info-card">
+                        <span class="section-subtitle">Restons en contact</span>
+                        <h2 class="section-title mt-2">Parlons de votre apprentissage</h2>
+
+                        <p class="section-text mt-4">
+                            Une question sur les leçons, les niveaux ou l'apprentissage de l'arabe ?
+                            Vous pouvez m'envoyer un message via ce formulaire.
+                        </p>
+
+                        <ul class="contact-info-list">
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>contact@miftaharabi.com</span>
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-youtube"></i>
+                                <span>Miftah Arabi sur YouTube</span>
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-instagram"></i>
+                                <span>Miftah Arabi sur Instagram</span>
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-telegram"></i>
+                                <span>Miftah Arabi sur Telegram</span>
+                            </li>
+                        </ul>
+
+                        <p class="section-text mt-4">
+                            Miftah Arabi propose une approche simple, progressive et accessible
+                            pour apprendre l'arabe littéraire.
+                        </p>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Message <span class="text-danger">*</span></label>
-                        <div class="text-danger">{{ form_errors(contactForm.message) }}</div>
-                        {{ form_widget(contactForm.message, {'attr': {'class': 'form-control', 'rows': 6}}) }}
-                    </div>
-
-                    <div>
-                        <input formnovalidate type="submit" value="Envoyer" class="btn btn-primary w-100 shadow">
-                    </div>
-                {{ form_end(contactForm) }}
-            </div>
-
-            <div class="col-lg-6">
-                <div class="h-100 d-flex flex-column justify-content-center align-items-start">
-                    <h2 class="h4 mb-4">Restons en contact</h2>
-
-                    <p class="mb-3">
-                        Une question sur les leçons, les niveaux ou l'apprentissage de l'arabe ?
-                        Vous pouvez m'envoyer un message via ce formulaire.
-                    </p>
-
-                    <p>
-                        <strong><i class="fa-solid fa-envelope"></i></strong>
-                        <a class="text-decoration-none text-dark" href="mailto:contact@miftaharabi.com">
-                            contact@miftaharabi.com
-                        </a>
-                    </p>
-
-                    <p>
-                        <strong><i class="fa-brands fa-youtube"></i></strong>
-                        <span>Miftah Arabi sur YouTube</span>
-                    </p>
-
-                    <p>
-                        <strong><i class="fa-brands fa-instagram"></i></strong>
-                        <span>Miftah Arabi sur Instagram</span>
-                    </p>
-
-                    <p>
-                        <strong><i class="fa-brands fa-telegram"></i></strong>
-                        <span>Miftah Arabi sur Telegram</span>
-                    </p>
-
-                    <p class="mt-3">
-                        Miftah Arabi propose une approche simple, progressive et accessible pour apprendre l'arabe littéraire.
-                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

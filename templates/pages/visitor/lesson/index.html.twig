@@ -15,171 +15,177 @@ leçons arabe, cours d'arabe, arabe littéraire, apprendre l'arabe, alphabet ara
 {% endblock %}
 
 {% block main %}
-    {% include 'components/visitor/_header_visitor.html.twig' with {'h1': "Liste des leçons"} %}
-
-    <div class="container my-5">
-
-        {# FILTRES #}
-        <div class="row text-center">
-
-            {# Catégories #}
-            <div class="col-md-4">
-                <div class="dropdown my-2">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Les catégories
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        {% if categories is not empty %}
-                            {% for category in categories %}
-                                <li>
-                                    <a class="dropdown-item" href="{{ path('app_visitor_lesson_filter_by_category', {'id': category.id, 'slug': category.slug}) }}">
-                                        {{ category.name }} ({{ category.lessons|length }} leçon{{ category.lessons|length > 1 ? 's' : '' }})
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        {% else %}
-                            <li><a class="dropdown-item" href="#">Aucune catégorie</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-
-            {# Tags #}
-            <div class="col-md-4">
-                <div class="dropdown my-2">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Les tags
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        {% if tags is not empty %}
-                            {% for tag in tags %}
-                                <li>
-                                    <a class="dropdown-item" href="{{ path('app_visitor_lesson_filter_by_tag', {'id': tag.id, 'slug': tag.slug}) }}">
-                                        {{ tag.name }} ({{ tag.lessons|length }} leçon{{ tag.lessons|length > 1 ? 's' : '' }})
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        {% else %}
-                            <li><a class="dropdown-item" href="#">Aucun tag</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-
-            {# Niveaux #}
-            <div class="col-md-4">
-                <div class="dropdown my-2">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Les niveaux
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        {% if levels is not empty %}
-                            {% for label, value in levels %}
-                                <li>
-                                    <a class="dropdown-item" href="{{ path('app_visitor_lesson_filter_by_level', {'level': value}) }}">
-                                        {{ label }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        {% else %}
-                            <li><a class="dropdown-item" href="#">Aucun niveau</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-
+    <section class="page-banner">
+        <div class="container text-center">
+            <span class="section-subtitle section-subtitle-light">Leçons</span>
+            <h1 class="page-banner-title mt-2">Explorez les leçons</h1>
         </div>
+    </section>
 
-        {# LISTE DES LEÇONS #}
-        <div class="row">
-            <div class="col-md-12 col-lg-8 mx-auto">
+    <section class="lesson-list-section">
+        <div class="container">
 
-                {% for lesson in lessons %}
-                    <div class="card shadow my-5">
-                        <div class="row g-0">
+            <div class="lesson-filters-wrapper mb-5">
+                <div class="row g-3 justify-content-center">
 
-                            <div class="col-md-4">
-                                {% if lesson.image %}
-                                    <img class="w-100 h-100 rounded-start"
-                                         src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
-                                         alt="{{ lesson.title }}">
+                    <div class="col-md-4">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary btn-ma-outline dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Les catégories
+                            </button>
+
+                            <ul class="dropdown-menu w-100">
+                                {% if categories is not empty %}
+                                    {% for category in categories %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_visitor_lesson_filter_by_category', {'id': category.id, 'slug': category.slug}) }}">
+                                                {{ category.name }} ({{ category.lessons|length }} leçon{{ category.lessons|length > 1 ? 's' : '' }})
+                                            </a>
+                                        </li>
+                                    {% endfor %}
                                 {% else %}
-                                    <img class="w-100 h-100"
-                                         src="/images/statics/default-lesson-image.png"
-                                         alt="{{ lesson.title }}">
+                                    <li><span class="dropdown-item">Aucune catégorie</span></li>
                                 {% endif %}
-                            </div>
-
-                            <div class="col-md-8">
-                                <div class="card-body">
-
-                                    <h5 class="card-title">
-                                        {{ lesson.title|u.truncate(80, '...') }}
-                                    </h5>
-
-                                    <p class="card-text">
-                                        Catégorie :
-                                        <span class="badge text-bg-info">
-                                            {{ lesson.category.name }}
-                                        </span>
-                                    </p>
-
-                                    {# Niveau #}
-                                    <p class="card-text">
-                                        Niveau :
-                                        <span class="badge text-bg-warning">
-                                            {% if lesson.level == 'debutant' %}
-                                                Débutant
-                                            {% elseif lesson.level == 'intermediaire' %}
-                                                Intermédiaire
-                                            {% elseif lesson.level == 'avance' %}
-                                                Avancé
-                                            {% else %}
-                                                {{ lesson.level }}
-                                            {% endif %}
-                                        </span>
-                                    </p>
-
-                                    {% if lesson.tags is not empty %}
-                                        <p class="card-text">
-                                            Tags :
-                                            {% for tag in lesson.tags %}
-                                                <span class="badge text-bg-secondary">
-                                                    {{ tag.name }}
-                                                </span>
-                                            {% endfor %}
-                                        </p>
-                                    {% endif %}
-
-                                    <p class="card-text">
-                                        <small class="text-body-secondary">
-                                            Publié le {{ lesson.publishedAt|date('d/m/Y à H:i') }}
-                                        </small>
-                                    </p>
-
-                                    <a href="#" class="btn btn-primary shadow">
-                                        Lire la leçon
-                                    </a>
-
-                                </div>
-                            </div>
-
+                            </ul>
                         </div>
                     </div>
-                {% else %}
-                    <p class="text-center">Aucune leçon disponible.</p>
-                {% endfor %}
 
-                {# Pagination #}
-                <div class="d-flex justify-content-center align-items-center">
-                    {{ knp_pagination_render(lessons) }}
+                    <div class="col-md-4">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary btn-ma-outline dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Les tags
+                            </button>
+
+                            <ul class="dropdown-menu w-100">
+                                {% if tags is not empty %}
+                                    {% for tag in tags %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_visitor_lesson_filter_by_tag', {'id': tag.id, 'slug': tag.slug}) }}">
+                                                {{ tag.name }} ({{ tag.lessons|length }} leçon{{ tag.lessons|length > 1 ? 's' : '' }})
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li><span class="dropdown-item">Aucun tag</span></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary btn-ma-outline dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Les niveaux
+                            </button>
+
+                            <ul class="dropdown-menu w-100">
+                                {% if levels is not empty %}
+                                    {% for label, value in levels %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_visitor_lesson_filter_by_level', {'level': value}) }}">
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li><span class="dropdown-item">Aucun niveau</span></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
 
-    </div>
+            <div class="row g-4">
+                {% for lesson in lessons %}
+                    <div class="col-12">
+                        <article class="card lesson-list-card">
+                            <div class="row g-0 align-items-stretch">
+
+                                <div class="col-md-4">
+                                    {% if lesson.image %}
+                                        <img
+                                            class="lesson-list-image"
+                                            src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
+                                            alt="{{ lesson.title }}"
+                                        >
+                                    {% else %}
+                                        <img
+                                            class="lesson-list-image"
+                                            src="/images/statics/default-lesson-image.png"
+                                            alt="{{ lesson.title }}"
+                                        >
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="card-body d-flex flex-column h-100">
+
+                                        <h2 class="lesson-list-title">
+                                            {{ lesson.title|u.truncate(80, '...') }}
+                                        </h2>
+
+                                        <div class="lesson-meta mt-3">
+                                            <p class="mb-2">
+                                                <strong>Catégorie :</strong>
+                                                <span class="badge badge-category">
+                                                    {{ lesson.category.name }}
+                                                </span>
+                                            </p>
+
+                                            <p class="mb-2">
+                                                <strong>Niveau :</strong>
+                                                <span class="badge badge-level">
+                                                    {% if lesson.level == 'debutant' %}
+                                                        Débutant
+                                                    {% elseif lesson.level == 'intermediaire' %}
+                                                        Intermédiaire
+                                                    {% elseif lesson.level == 'avance' %}
+                                                        Avancé
+                                                    {% else %}
+                                                        {{ lesson.level }}
+                                                    {% endif %}
+                                                </span>
+                                            </p>
+
+                                            {% if lesson.tags is not empty %}
+                                                <p class="mb-2">
+                                                    <strong>Tags :</strong>
+                                                    {% for tag in lesson.tags %}
+                                                        <span class="badge badge-tag">{{ tag.name }}</span>
+                                                    {% endfor %}
+                                                </p>
+                                            {% endif %}
+                                        </div>
+
+                                        <p class="lesson-date mt-2">
+                                            Publié le {{ lesson.publishedAt|date('d/m/Y à H:i') }}
+                                        </p>
+
+                                        <div class="mt-auto pt-3">
+                                            <a href="#" class="btn btn-primary btn-ma">
+                                                Lire la leçon
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">Aucune leçon disponible.</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="pagination-wrapper mt-5 d-flex justify-content-center align-items-center">
+                {{ knp_pagination_render(lessons) }}
+            </div>
+
+        </div>
+    </section>
 {% endblock %}
