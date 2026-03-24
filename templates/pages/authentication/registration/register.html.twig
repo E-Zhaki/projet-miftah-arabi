@@ -13,10 +13,7 @@
         <meta name="author" content="Zhaki El Ouarroudi">
         <meta name="publisher" content="Miftah Arabi">
 
-        {# Couleur navigateur (mobile) #}
         <meta name="theme-color" content="#c49b66">
-
-        {# Favicon #}
 
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
         <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -25,218 +22,101 @@
         <meta name="apple-mobile-web-app-title" content="MyWebSite">
         <link rel="manifest" href="/site.webmanifest">
 
-        {# Google Font #}
-
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        {# WebpakEncore stylesheets #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {# WebpakEncore javascripts #}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class='ma-auth-bg ma-body'>
+    <body class="ma-auth-bg ma-body ma-auth-body">
         <main>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <img class= "img-fluid" src="/images/statics/inscription.png" alt="Une image de Miftah Arabi vous invitant à vous inscrire">
-                    </div>
-                    <div class="col-lg-6 d-flex flex-column gap-3 justify-content-center align-items-center">
-                        <h1 class="text-center my-3">Inscription</h1>
+                <div class="row align-items-center g-5 py-4">
 
-                        {% for flash_error in app.flashes('verify_email_error') %}
-                            <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
-                        {% endfor %}
-
-                        {{ form_start(registrationForm, {'attr': {'class':'ma-auth-form'}})}}
-                            <div class="row">
-                                <div class="col-lg-6 mb-3">
-                                    <label for="registration_form_firstName">Prénom</label>
-                                    <div class="text-danger">{{form_errors(registrationForm.firstName)}}</div>
-                                    {{form_widget(registrationForm.firstName, {'attr':
-                                    {'class':'form-control', 'autofocus':'autofocus'}})}}
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="registration_form_lastName">Nom</label>
-                                    <div class="text-danger">{{form_errors(registrationForm.lastName)}}</div>
-                                    {{form_widget(registrationForm.lastName, {'attr':
-                                    {'class':'form-control'}})}}
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                    <label for="registration_form_email">Email</label>
-                                    <div class="text-danger">{{form_errors(registrationForm.email)}}</div>
-                                    {{form_widget(registrationForm.email, {'attr':
-                                    {'class':'form-control'}})}}
-                            </div>
-                            <div class="mb-3">
-                                    <label for="registration_form_password_first">Mot de passe</label>
-                                    <div class="text-danger">{{form_errors(registrationForm.password.first)}}</div>
-                                    {{form_widget(registrationForm.password.first, {'attr':
-                                    {'class':'form-control', 'placeholder': 'Au moins 12 caractères'}})}}
-                                    <small><i class="fa-solid fa-circle-exclamation"></i> Au moins une lettre minuscule et majuscule, un chiffre et un caractère spécial.</small>
-                            </div>
-                            <div class="mb-3">
-                                    <label for="registration_form_password_second">Confirmation du mot de passe</label>
-                                    <div class="text-danger">{{form_errors(registrationForm.password.second)}}</div>
-                                    {{form_widget(registrationForm.password.second, {'attr':
-                                    {'class':'form-control'}})}}
-                            </div>
-                             <div class="mb-3">
-                             <div class="text-danger">{{form_errors(registrationForm.agreeTerms)}}</div>
-                                {{form_widget(registrationForm.agreeTerms)}}
-                                <label for="registration_form_agreeTerms">Lire et accepter <a href="{{path('app_visitor_terms_of_service')}}" target="_blank">les conditions générales d'utilisation</a></label>
-                            </div>
-                            <div>
-                                <input type="submit" formnovalidate class= "btn btn-primary w-100 shadow" value="S'inscrire">
-                            </div>
-                        {{ form_end(registrationForm) }}
-
-                        
-
-                        <div class="text-center my-3">
-                            <p>Vous avez déjà un compte? <a href="{{path('app_login')}}">Connectez-vous</a></p>
-                            <p><a href="{{path('app_visitor_welcome')}}">Retour à l'accueil</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        
-    </body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-    {# <body class="ma-auth-bg">
-        <main>
-            <div class="container">
-                <div class="row min-vh-100 align-items-center">
-                    
-                
-                    <div class="col-lg-6 d-none d-lg-block text-center">
+                    {# Image #}
+                    <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center">
                         <img
                             class="img-fluid"
+                            style="max-height: 420px;"
                             src="/images/statics/inscription.png"
-                            alt="Illustration invitant à l'inscription sur Miftah Arabi"
+                            alt="Illustration inscription Miftah Arabi"
                         >
                     </div>
 
-                    
-                    <div class="col-lg-6 d-flex flex-column gap-3 justify-content-center align-items-center">
-                        
-                        <h1 class="text-center my-3">Inscription</h1>
+                    {# Formulaire #}
+                    <div class="col-lg-6 d-flex justify-content-center">
+                        <div class="ma-auth-card">
 
-                        <div class="w-100" style="max-width: 420px;">
-                            <div class="card shadow-sm border-0 rounded-4 p-4">
+                            <h1 class="ma-auth-title">Inscription</h1>
 
-                                {{ form_start(registrationForm) }}
+                            {% for flash_error in app.flashes('verify_email_error') %}
+                                <div class="alert alert-danger mb-3" role="alert">{{ flash_error }}</div>
+                            {% endfor %}
 
-                                    {{ form_errors(registrationForm) }}
+                            {{ form_start(registrationForm, {'attr': {'class': 'ma-auth-form'}}) }}
 
-                                    <div class="row">
-                                        <div class="col-lg-6 mb-3">
-                                            {{ form_label(registrationForm.firstName, 'Prénom') }}
-                                            {{ form_widget(registrationForm.firstName, {
-                                                attr: {
-                                                    class: 'form-control',
-                                                    autofocus: true
-                                                }
-                                            }) }}
-                                            {{ form_errors(registrationForm.firstName) }}
-                                        </div>
-
-                                        <div class="col-lg-6 mb-3">
-                                            {{ form_label(registrationForm.lastName, 'Nom') }}
-                                            {{ form_widget(registrationForm.lastName, {
-                                                attr: { class: 'form-control' }
-                                            }) }}
-                                            {{ form_errors(registrationForm.lastName) }}
-                                        </div>
+                                <div class="row">
+                                    <div class="col-sm-6 mb-3">
+                                        <label for="registration_form_firstName">Prénom</label>
+                                        <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.firstName) }}</div>
+                                        {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control', 'autofocus': 'autofocus'}}) }}
                                     </div>
-
-                                    <div class="mb-3">
-                                        {{ form_label(registrationForm.email, 'Adresse email') }}
-                                        {{ form_widget(registrationForm.email, {
-                                            attr: { class: 'form-control' }
-                                        }) }}
-                                        {{ form_errors(registrationForm.email) }}
+                                    <div class="col-sm-6 mb-3">
+                                        <label for="registration_form_lastName">Nom</label>
+                                        <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.lastName) }}</div>
+                                        {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
                                     </div>
+                                </div>
 
-                                    <div class="mb-3">
-                                        {{ form_label(registrationForm.password.first, 'Mot de passe') }}
-                                        {{ form_widget(registrationForm.password.first, {
-                                            attr: {
-                                                class: 'form-control',
-                                                placeholder: 'Au moins 12 caractères'
-                                            }
-                                        }) }}
-                                        {{ form_errors(registrationForm.password.first) }}
-                                        <small class="text-muted">
-                                            <i class="fa-solid fa-circle-exclamation"></i>
-                                            Au moins une majuscule, une minuscule, un chiffre et un caractère spécial.
-                                        </small>
+                                <div class="mb-3">
+                                    <label for="registration_form_email">Email</label>
+                                    <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.email) }}</div>
+                                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registration_form_password_first">Mot de passe</label>
+                                    <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.password.first) }}</div>
+                                    {{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control', 'placeholder': 'Au moins 12 caractères'}}) }}
+                                    <p class="ma-auth-hint"><i class="fa-solid fa-circle-exclamation"></i> Minuscule, majuscule, chiffre et caractère spécial requis.</p>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registration_form_password_second">Confirmation du mot de passe</label>
+                                    <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.password.second) }}</div>
+                                    {{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.agreeTerms) }}</div>
+                                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                                        <label class="form-check-label" for="registration_form_agreeTerms">
+                                            Lire et accepter <a href="{{ path('app_visitor_terms_of_service') }}" target="_blank">les conditions générales d'utilisation</a>
+                                        </label>
                                     </div>
+                                </div>
 
-                                    <div class="mb-3">
-                                        {{ form_label(registrationForm.password.second, 'Confirmation du mot de passe') }}
-                                        {{ form_widget(registrationForm.password.second, {
-                                            attr: { class: 'form-control' }
-                                        }) }}
-                                        {{ form_errors(registrationForm.password.second) }}
-                                    </div>
+                                <input type="submit" formnovalidate class="btn btn-primary w-100" value="S'inscrire">
 
-                                    <div class="form-check mb-3">
-                                        {{ form_widget(registrationForm.agreeTerms, {
-                                            attr: { class: 'form-check-input' }
-                                        }) }}
-                                        {{ form_label(
-                                            registrationForm.agreeTerms,
-                                            "Lire et accepter les conditions générales d'utilisation",
-                                            { label_attr: { class: 'form-check-label' } }
-                                        ) }}
-                                        {{ form_errors(registrationForm.agreeTerms) }}
-                                    </div>
+                            {{ form_end(registrationForm) }}
 
-                                    <button type="submit" class="btn btn-primary w-100 shadow">
-                                        S'inscrire
-                                    </button>
-
-                                {{ form_end(registrationForm) }}
-
+                            <div class="text-center mt-4">
+                                <p class="mb-1" style="font-size:0.9rem;">Déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous</a></p>
+                                <a href="{{ path('app_visitor_welcome') }}" style="font-size:0.85rem;">Retour à l'accueil</a>
                             </div>
-                        </div>
 
-                        <div class="text-center my-3">
-                            <p>
-                                Vous avez déjà un compte ?
-                                <a href="#">Connectez-vous</a>
-                            </p>
-                            <p>
-                                <a href="{{ path('app_visitor_welcome') }}">Retour à l'accueil</a>
-                            </p>
                         </div>
-
                     </div>
+
                 </div>
             </div>
         </main>
-    </body> #}
+    </body>
+</html>
