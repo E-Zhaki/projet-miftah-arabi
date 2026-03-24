@@ -1,19 +1,21 @@
 .header-visitor {
-    clip-path: polygon(0 0, 100% 0%, 100% 79%, 0% 100%);
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    background: linear-gradient(135deg, #8c6a43 0%, #c49b66 100%);
+    color: $ma-white;
+    clip-path: polygon(0 0, 100% 0%, 100% 88%, 0% 100%);
+    padding-top: 2.2rem;
+    padding-bottom: 2.4rem;
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
     .header-visitor {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-top: 2.7rem;
+        padding-bottom: 2.9rem;
     }
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width: 992px) {
     .header-visitor {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        padding-top: 3rem;
+        padding-bottom: 3.2rem;
     }
 }

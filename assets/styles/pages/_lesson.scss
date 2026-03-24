@@ -1,0 +1,85 @@
+.lesson-list-section {
+    padding: 4rem 0 5rem;
+}
+
+.lesson-filters-wrapper {
+    background-color: rgba(255, 255, 255, 0.72);
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: $ma-box-shadow;
+}
+
+.lesson-list-card {
+    overflow: hidden;
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+.lesson-list-image {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.lesson-list-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $ma-dark;
+    margin-bottom: 0.5rem;
+}
+
+.lesson-date {
+    color: $ma-muted;
+    font-size: 0.95rem;
+}
+
+.lesson-filters-wrapper {
+
+    .dropdown-menu {
+        border: none;
+        border-radius: 18px;
+        box-shadow: $ma-box-shadow;
+        padding: 0.75rem;
+    }
+
+    .dropdown-item {
+        border-radius: 12px;
+        padding: 0.65rem 0.85rem;
+        color: $ma-dark;
+    }
+
+    .dropdown-item:hover {
+        background-color: rgba(196, 155, 102, 0.12);
+        color: $ma-primary;
+    }
+}
+
+.pagination-wrapper .page-link {
+    border: none;
+    color: $ma-primary;
+    border-radius: 12px;
+    margin: 0 0.2rem;
+    box-shadow: none;
+}
+
+.pagination-wrapper .page-item.active .page-link {
+    background-color: $ma-primary;
+    color: $ma-white;
+}
+
+.pagination-wrapper .page-link:hover {
+    background-color: rgba(196, 155, 102, 0.12);
+    color: $ma-primary;
+}
+
+@media screen and (max-width: 767px) {
+    .lesson-list-title {
+        font-size: 1.6rem;
+    }
+
+    .lesson-list-image {
+        min-height: 220px;
+    }
+}

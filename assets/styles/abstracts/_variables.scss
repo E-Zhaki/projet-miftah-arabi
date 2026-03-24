@@ -1,12 +1,16 @@
-$ma-primary: #8c6a43;
-$ma-secondary: #d8c3a5;
-$ma-light: #f7f1e8;
-$ma-dark: #3e2f22;
-$ma-accent: #c49b66;
+$ma-primary:        #8c6a43;   // brun argile — boutons, CTA
+$ma-secondary:      #d8c3a5;   // beige clair
+$ma-accent:         #c49b66;   // or sable — hover, actif
+$ma-light:          #f7f1e8;   // parchemin — fond body
+$ma-dark:           #2f241b;   // encre brun — textes titres
+$ma-muted:          #7a6a5a;   // gris brun — textes secondaires
+$ma-white:          #ffffff;
 
-$ma-auth-bg: #817542;
-$ma-text-color: #2f241b;
-$ma-body-bg: #fcf8f3;
+$ma-auth-bg:        #7a5634;   // brun profond — fond auth
 
-$ma-border-radius: 12px;
-$ma-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$ma-badge-category: #8b5e1e;   // badge catégorie — or ambré
+$ma-badge-level:    #7a3228;   // badge niveau   — terracotta/brique
+$ma-badge-tag:      #3f3934;   // badge tag      — brun encre
+
+$ma-border-radius:  14px;
+$ma-box-shadow:     0 10px 30px rgba(47, 36, 27, 0.08);

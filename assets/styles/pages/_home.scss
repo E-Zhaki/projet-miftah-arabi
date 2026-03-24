@@ -1,0 +1,136 @@
+.hero-section {
+    padding: 5rem 0 3rem;
+}
+
+.hero-image-wrapper {
+    background: linear-gradient(145deg, #f4ede4, #ffffff);
+    border-radius: 28px;
+    padding: 1rem;
+    box-shadow: $ma-box-shadow;
+}
+
+.hero-image {
+    border-radius: 22px;
+    width: 100%;
+    max-height: 560px;
+    object-fit: cover;
+}
+
+.about-section {
+    padding: 5rem 0;
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+.about-image-wrapper {
+    background-color: $ma-white;
+    border-radius: 24px;
+    padding: 1rem;
+    box-shadow: $ma-box-shadow;
+}
+
+.about-image {
+    border-radius: 18px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.lessons-section {
+    padding: 5rem 0;
+}
+
+.lesson-card {
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+.lesson-card-image {
+    height: 240px;
+    object-fit: cover;
+}
+
+.lesson-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $ma-dark;
+}
+
+.lesson-date {
+    color: $ma-muted;
+    font-size: 0.95rem;
+}
+
+.cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, rgba(216, 195, 165, 0.18) 0%, rgba(255, 255, 255, 0.35) 100%);
+}
+
+.cta-text {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-banner {
+    background: linear-gradient(135deg, #8c6a43 0%, #c49b66 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 82%, 0% 100%);
+    padding: 5rem 0 6rem;
+}
+
+.contact-section {
+    padding: 4rem 0 5rem;
+}
+
+.contact-form-card,
+.contact-info-card {
+    background-color: rgba(255, 255, 255, 0.88);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: $ma-box-shadow;
+}
+
+.contact-input,
+.contact-textarea {
+    border-radius: 14px;
+    border: 1px solid rgba(47, 36, 27, 0.12);
+    padding: 0.9rem 1rem;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+    border-color: rgba(196, 155, 102, 0.6);
+    box-shadow: 0 0 0 0.2rem rgba(196, 155, 102, 0.12);
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    color: $ma-muted;
+}
+
+.contact-info-list i {
+    color: $ma-primary;
+    width: 20px;
+}
+
+@media screen and (max-width: 991px) {
+    .hero-section,
+    .about-section,
+    .lessons-section,
+    .cta-section,
+    .contact-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .hero-image {
+        max-height: 440px;
+    }
+}

@@ -1,12 +1,43 @@
-    * {
+* {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
-    }
+}
 
-    .navbar-brand {
+.navbar-brand {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    }
+}
+
+.hero-subtitle,
+.section-subtitle {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $ma-primary;
+}
+
+.hero-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $ma-dark;
+}
+
+.hero-text,
+.hero-text-secondary,
+.section-text {
+    color: $ma-dark;
+    font-size: 1.05rem;
+    opacity: 0.75;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $ma-dark;
+}

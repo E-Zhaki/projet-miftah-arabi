@@ -12,56 +12,74 @@ langue arabe, apprendre l'arabe, arabe littéraire, cours d'arabe, plateforme ar
 
 {% block main %}
 
-    <header class="py-5">
+    <section class="hero-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-5 order-md-2 d-flex justify-content-center align-items-center">
-                    <img class="img-fluid rounded shadow" src="/images/statics/logomiftah.webp" alt="Illustration de bienvenue Miftah Arabi">
-                </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="hero-subtitle">La clé pour apprendre l'arabe</span>
+                    <h1 class="hero-title mt-3">Bienvenue sur Miftah Arabi</h1>
 
-                <div class="col-md-7 order-md-1 d-flex flex-column justify-content-center align-items-center align-items-md-start gap-4 text-center text-md-start">
-                    <h1 class="mt-4 display-5">Bienvenue sur Miftah Arabi</h1>
+                    <p class="hero-text mt-4">
+                        Apprenez l'arabe littéraire simplement, étape par étape, grâce à des leçons claires,
+                        progressives et accessibles.
+                    </p>
 
-                    <div>
-                        <p class="lead">La clé pour apprendre l'arabe simplement, pas à pas.</p>
-                        <p>
-                            Découvrez des leçons claires, progressives et accessibles pour apprendre l'arabe littéraire,
-                            enrichir votre vocabulaire et avancer avec méthode.
-                        </p>
-                    </div>
+                    <p class="hero-text-secondary">
+                        Développez votre lecture, votre vocabulaire et votre compréhension avec une approche
+                        pédagogique pensée pour les francophones.
+                    </p>
 
-                    <div class="d-flex flex-column flex-sm-row gap-3">
-                        <a href="{{ path('app_visitor_lesson_index') }}" class="btn btn-lg btn-primary shadow">
+                    <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                        <a href="{{ path('app_visitor_lesson_index') }}" class="btn btn-primary btn-ma">
                             Voir les leçons
                         </a>
-                        <a href="{{ path('app_visitor_contact_index') }}" class="btn btn-lg btn-outline-primary shadow">
+                        <a href="{{ path('app_visitor_contact_index') }}" class="btn btn-outline-primary btn-ma-outline">
                             Me contacter
                         </a>
                     </div>
                 </div>
+
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image-wrapper">
+                        <img
+                            src="/images/statics/logomiftah.webp"
+                            alt="Logo Miftah Arabi"
+                            class="img-fluid hero-image"
+                        >
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <section id="about-me" class="bg-light py-5">
-        <h2 class="text-center my-3 display-6">À propos de Miftah Arabi</h2>
-
+    <section id="about-me" class="about-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <img class="img-fluid rounded shadow" src="/images/statics/about-miftah-arabi.png" alt="Présentation de Miftah Arabi">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center">
+                    <div class="about-image-wrapper">
+                        <img
+                            src="/images/statics/livre.png"
+                            alt="Présentation de Miftah Arabi"
+                            class="img-fluid about-image"
+                        >
+                    </div>
                 </div>
 
-                <div class="col-md-6 d-flex flex-column justify-content-center align-items-center align-items-md-start text-center text-md-start">
-                    <p>
-                        Miftah Arabi est une plateforme pensée pour les francophones qui souhaitent apprendre l'arabe
-                        de manière simple, progressive et motivante.
+                <div class="col-lg-7">
+                    <span class="section-subtitle">À propos</span>
+                    <h2 class="section-title mt-2">À propos de Miftah Arabi</h2>
+
+                    <p class="section-text mt-4">
+                        Miftah Arabi est une plateforme pensée pour les francophones qui souhaitent apprendre
+                        l'arabe de manière simple, progressive et motivante.
                     </p>
-                    <p>
+
+                    <p class="section-text">
                         Le projet s'adresse aux débutants comme aux apprenants plus avancés, avec des contenus
                         organisés par catégories, niveaux et thématiques.
                     </p>
-                    <p>
+
+                    <p class="section-text">
                         L'objectif est de proposer une approche claire et pédagogique, en s'appuyant sur des leçons,
                         des ressources utiles et des contenus accessibles depuis plusieurs supports.
                     </p>
@@ -70,79 +88,97 @@ langue arabe, apprendre l'arabe, arabe littéraire, cours d'arabe, plateforme ar
         </div>
     </section>
 
-    <section class="py-5">
-        <h2 class="text-center my-3 display-6">Les dernières leçons</h2>
-
+    <section class="lessons-section">
         <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Découvrir</span>
+                <h2 class="section-title mt-2">Les dernières leçons</h2>
+            </div>
+
             <div class="row g-4">
                 {% for lesson in lessons %}
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow h-100">
+                    <div class="col-md-6 col-xl-4">
+                        <article class="card lesson-card h-100">
                             {% if lesson.image %}
-                                <img class="w-100 card-img-top" src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}" alt="{{ lesson.title }}">
+                                <img
+                                    class="card-img-top lesson-card-image"
+                                    src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
+                                    alt="{{ lesson.title }}"
+                                >
                             {% else %}
-                                <img class="w-100 card-img-top" src="/images/statics/default-lesson-image.png" alt="{{ lesson.title }}">
+                                <img
+                                    class="card-img-top lesson-card-image"
+                                    src="/images/statics/default-lesson-image.png"
+                                    alt="{{ lesson.title }}"
+                                >
                             {% endif %}
 
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ lesson.title|u.truncate(80, '...') }}</h5>
+                                <h3 class="lesson-card-title">{{ lesson.title|u.truncate(80, '...') }}</h3>
 
-                                <p class="card-text">
-                                    <strong>Catégorie :</strong>
-                                    <span class="badge text-bg-info">{{ lesson.category.name }}</span>
-                                </p>
-
-                                <p class="card-text">
-                                    <strong>Niveau :</strong>
-                                    <span class="badge text-bg-warning">
-                                        {% if lesson.level == 'debutant' %}
-                                            Débutant
-                                        {% elseif lesson.level == 'intermediaire' %}
-                                            Intermédiaire
-                                        {% elseif lesson.level == 'avance' %}
-                                            Avancé
-                                        {% else %}
-                                            {{ lesson.level }}
-                                        {% endif %}
-                                    </span>
-                                </p>
-
-                                {% if lesson.tags is not empty %}
-                                    <p class="card-text">
-                                        <strong>Tags :</strong>
-                                        {% for tag in lesson.tags %}
-                                            <span class="badge text-bg-secondary">{{ tag.name }}</span>
-                                        {% endfor %}
+                                <div class="lesson-meta mt-3">
+                                    <p class="mb-2">
+                                        <strong>Catégorie :</strong>
+                                        <span class="badge badge-category">{{ lesson.category.name }}</span>
                                     </p>
-                                {% endif %}
 
-                                <p class="card-text">
-                                    <small class="text-body-secondary">
-                                        Publié le {{ lesson.publishedAt|date('d/m/Y') }}
-                                    </small>
+                                    <p class="mb-2">
+                                        <strong>Niveau :</strong>
+                                        <span class="badge badge-level">
+                                            {% if lesson.level == 'debutant' %}
+                                                Débutant
+                                            {% elseif lesson.level == 'intermediaire' %}
+                                                Intermédiaire
+                                            {% elseif lesson.level == 'avance' %}
+                                                Avancé
+                                            {% else %}
+                                                {{ lesson.level }}
+                                            {% endif %}
+                                        </span>
+                                    </p>
+
+                                    {% if lesson.tags is not empty %}
+                                        <p class="mb-2">
+                                            <strong>Tags :</strong>
+                                            {% for tag in lesson.tags %}
+                                                <span class="badge badge-tag">{{ tag.name }}</span>
+                                            {% endfor %}
+                                        </p>
+                                    {% endif %}
+                                </div>
+
+                                <p class="lesson-date mt-2">
+                                    Publié le {{ lesson.publishedAt|date('d/m/Y') }}
                                 </p>
 
-                                <div class="mt-auto">
-                                    <a href="#" class="btn btn-primary shadow">Lire la leçon</a>
+                                <div class="mt-auto pt-3">
+                                    <a href="#" class="btn btn-primary btn-ma">
+                                        Lire la leçon
+                                    </a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 {% else %}
-                    <p class="text-center">Aucune leçon publiée pour le moment.</p>
+                    <div class="col-12">
+                        <p class="text-center">Aucune leçon publiée pour le moment.</p>
+                    </div>
                 {% endfor %}
             </div>
         </div>
     </section>
 
-    <section class="bg-light py-5">
+    <section class="cta-section">
         <div class="container text-center">
-            <h2 class="display-6 mb-3">Une question ?</h2>
-            <p class="mb-4">
+            <span class="section-subtitle">Contact</span>
+            <h2 class="section-title mt-2">Une question ?</h2>
+
+            <p class="section-text cta-text mt-4">
                 Vous pouvez me contacter pour toute question concernant les cours, les ressources
                 ou l'apprentissage de l'arabe.
             </p>
-            <a href="{{ path('app_visitor_contact_index') }}" class="btn btn-lg btn-primary shadow">
+
+            <a href="{{ path('app_visitor_contact_index') }}" class="btn btn-primary btn-ma mt-3">
                 Contactez-moi
             </a>
         </div>

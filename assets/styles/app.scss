@@ -1,25 +1,15 @@
-//Abstracts
-
 @import "./abstracts/variables";
-
-// the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
-//Themes
-
-@import "./themes/base_visitor.scss";
-
-//base
+@import "./themes/base_visitor";
 
 @import "./base/typography";
 @import "./base/classes";
 
-//components
 @import "./components/auth-form";
+@import "./components/header_visitor";
 
-// @import "./components/visitor/header_visitor";
+@import "./pages/gap_contact_visitor";
+@import "./pages/home";
 
-// Layout
-
-// Pages
-// @import "./pages/visitor/gap_contact_visitor";
+@import "./pages/lesson";
