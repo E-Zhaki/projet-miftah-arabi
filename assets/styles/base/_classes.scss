@@ -2,101 +2,111 @@
     background-color: $ma-auth-bg;
 }
 
-.nav-link {
-    color: $ma-dark;
-    font-weight: 500;
-}
+.ma-body {
 
-.nav-link:hover {
-    color: $ma-accent;
-}
+    .navbar:not(.navbar-dark) {
+        .nav-link {
+            color: $ma-dark;
+            font-weight: 500;
+        }
 
-.nav-link.active {
-    color: $ma-accent !important;
-    font-weight: 600;
-}
+        .nav-link:hover {
+            color: $ma-accent;
+        }
 
-.btn {
-    border-radius: 999px;
-    transition: all 0.25s ease;
-    padding: 0.75rem 1.4rem;
-    font-weight: 600;
-}
+        .nav-link.active {
+            color: $ma-accent !important;
+            font-weight: 600;
+        }
+    }
 
-.btn-primary {
-    background-color: $ma-primary;
-    border-color: $ma-primary;
-    color: $ma-white;
-}
+    .btn {
+        border-radius: 999px;
+        transition: all 0.25s ease;
+        padding: 0.75rem 1.4rem;
+        font-weight: 600;
+    }
 
-.btn-primary:hover {
-    background-color: darken($ma-primary, 6%);
-    border-color: darken($ma-primary, 6%);
-    color: $ma-white;
-    transform: translateY(-1px);
-}
+    .btn-primary {
+        background-color: $ma-primary;
+        border-color: $ma-primary;
+        color: $ma-white;
+    }
 
-.btn-outline-primary {
-    color: $ma-primary;
-    border-color: rgba(140, 106, 67, 0.35);
-    background-color: $ma-white;
-}
+    .btn-primary:hover {
+        background-color: darken($ma-primary, 6%);
+        border-color: darken($ma-primary, 6%);
+        color: $ma-white;
+        transform: translateY(-1px);
+    }
 
-.btn-outline-primary:hover {
-    background-color: $ma-primary;
-    border-color: $ma-primary;
-    color: $ma-white;
-}
+    .btn-outline-primary {
+        color: $ma-primary;
+        border-color: rgba($ma-primary, 0.35);
+        background-color: $ma-white;
+    }
 
-.btn-ma {
-    min-width: 180px;
-}
+    .btn-outline-primary:hover {
+        background-color: $ma-primary;
+        border-color: $ma-primary;
+        color: $ma-white;
+    }
 
-.btn-ma-outline {
-    min-width: 180px;
-}
+    .btn-ma {
+        min-width: 180px;
+    }
 
-.card {
-    border: none;
-    border-radius: 20px;
-    box-shadow: $ma-box-shadow;
-    background-color: $ma-white;
-}
+    .btn-ma-outline {
+        min-width: 180px;
+    }
 
-.card-title {
-    color: $ma-dark;
-}
+    .card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: $ma-box-shadow;
+        background-color: $ma-white;
+    }
 
-.card-text {
-    color: $ma-muted;
-}
+    .card-title {
+        color: $ma-dark;
+    }
 
-a {
-    transition: all 0.25s ease;
-    text-decoration: none;
-}
+    .card-text {
+        color: $ma-muted;
+    }
 
-.badge {
-    border-radius: 999px;
-    padding: 0.42rem 0.75rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-}
+    a {
+        transition: all 0.25s ease;
+        text-decoration: none;
+        color: $ma-primary;
+    }
 
-.badge-category {
-    background-color: rgba(196, 155, 102, 0.18);
-    color: #7a5634;
-    border: 1px solid rgba(196, 155, 102, 0.35);
-}
+    a:hover {
+        color: $ma-accent;
+    }
 
-.badge-level {
-    background-color: rgba(124, 92, 58, 0.14);
-    color: #5f4328;
-    border: 1px solid rgba(124, 92, 58, 0.28);
-}
+    .badge {
+        border-radius: 999px;
+        padding: 0.42rem 0.75rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+    }
 
-.badge-tag {
-    background-color: #3f3934;
-    color: $ma-white;
-    border: 1px solid #3f3934;
+    .badge-category {
+        background-color: rgba($ma-accent, 0.18);
+        color: $ma-badge-category;
+        border: 1px solid rgba($ma-accent, 0.35);
+    }
+
+    .badge-level {
+        background-color: rgba($ma-badge-level, 0.14);
+        color: $ma-badge-level;
+        border: 1px solid rgba($ma-badge-level, 0.35);
+    }
+
+    .badge-tag {
+        background-color: $ma-badge-tag;
+        color: $ma-white;
+        border: 1px solid $ma-badge-tag;
+    }
 }

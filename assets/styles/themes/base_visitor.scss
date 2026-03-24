@@ -7,10 +7,10 @@ html,
     display: grid;
     grid-template-rows: auto 1fr auto;
     background: linear-gradient(180deg, #fcfaf7 0%, #f7f1e8 100%);
-    color: $ma-text-color;
+    color: $ma-dark;
 }
 
-.navbar {
+.ma-body .navbar {
     padding: 0.55rem 0;
     background-color: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(8px);
