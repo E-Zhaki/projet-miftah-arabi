@@ -2,8 +2,42 @@
 
 {% block title %}Tableau de bord{% endblock %}
 
-{% block description %}Tableau de bord{% endblock %}
+{% block description %}Tableau de bord utilisateur{% endblock %}
 
 {% block main %}
-        <h1 class="text-center my-3 display-5">Hello User</h1>
+    <div class="container py-5">
+
+        <h1 class="mb-1 fs-4 fw-semibold" style="color: #2f241b;">
+            Bonjour {{ app.user.firstName }} 👋
+        </h1>
+        <p class="text-muted mb-5">Bienvenue sur votre espace personnel Miftah Arabi.</p>
+
+        <div class="row g-3">
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ path('app_visitor_lesson_index') }}" class="text-decoration-none">
+                    <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #8c6a43, #c49b66); color: white;">
+                        <div class="fs-2"><i class="fa-solid fa-feather"></i></div>
+                        <div>
+                            <div class="fw-semibold">Les leçons</div>
+                            <div class="small opacity-75">Accéder aux leçons</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ path('app_user_profile_index') }}" class="text-decoration-none">
+                    <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #4a6a8a, #6a9aba); color: white;">
+                        <div class="fs-2"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <div class="fw-semibold">Mon profil</div>
+                            <div class="small opacity-75">Gérer mes informations</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
