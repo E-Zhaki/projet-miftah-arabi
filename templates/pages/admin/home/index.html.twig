@@ -1,19 +1,68 @@
 {% extends 'themes/base_admin.html.twig' %}
 
-{% block title %}
-
-    Tableau de bord
-    
-{% endblock %}
-
-{% block description %}
-
-    Tableau de bord
-    
-{% endblock %}
+{% block title %}Tableau de bord{% endblock %}
 
 {% block main %}
+    <div class="container-fluid py-4 px-4">
 
-    <h1 class="text-center my-3 display-5">Tableau de bord</h1>
-    
+        <h1 class="mb-4 fs-4 fw-semibold" style="color: #2f241b;">Tableau de bord</h1>
+
+        <div class="row g-3">
+
+            <div class="col-sm-6 col-xl-4">
+                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #8c6a43, #c49b66); color: white;">
+                    <div class="fs-2"><i class="fa-solid fa-folder-open"></i></div>
+                    <div>
+                        <div class="fw-bold fs-2">{{ categories_counted }}</div>
+                        <div class="small opacity-75">Catégories</div>
+                    </div>
+                    <a href="{{ path('app_admin_category_index') }}" class="stretched-link"></a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-4">
+                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #5a7a5a, #7aaa7a); color: white;">
+                    <div class="fs-2"><i class="fa-solid fa-feather"></i></div>
+                    <div>
+                        <div class="fw-bold fs-2">{{ lessons_counted }}</div>
+                        <div class="small opacity-75">Leçons</div>
+                    </div>
+                    <a href="{{ path('app_admin_lesson_index') }}" class="stretched-link"></a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-4">
+                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #4a6a8a, #6a9aba); color: white;">
+                    <div class="fs-2"><i class="fa-solid fa-hashtag"></i></div>
+                    <div>
+                        <div class="fw-bold fs-2">{{ tags_counted }}</div>
+                        <div class="small opacity-75">Tags</div>
+                    </div>
+                    <a href="{{ path('app_admin_tag_index') }}" class="stretched-link"></a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-4">
+                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #7a5634, #a07050); color: white;">
+                    <div class="fs-2"><i class="fa-solid fa-users"></i></div>
+                    <div>
+                        <div class="fw-bold fs-2">{{ users_counted }}</div>
+                        <div class="small opacity-75">Utilisateurs</div>
+                    </div>
+                    <a href="{{ path('app_admin_user_index') }}" class="stretched-link"></a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-4">
+                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #8a4a4a, #ba7a6a); color: white;">
+                    <div class="fs-2"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <div class="fw-bold fs-2">{{ contacts_counted }}</div>
+                        <div class="small opacity-75">Messages reçus</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

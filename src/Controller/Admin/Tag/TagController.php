@@ -55,7 +55,7 @@ final class TagController extends AbstractController
         ]);
     }
 
-    #[Route('/tag/{id<\d+>}edit', name: 'app_admin_tag_edit', methods: ['GET', 'POST'])]
+    #[Route('/tag/{id<\d+>}/edit', name: 'app_admin_tag_edit', methods: ['GET', 'POST'])]
     public function edit(Tag $tag, Request $request): Response
     {
         $form = $this->createForm(TagFormType::class, $tag);
@@ -78,7 +78,7 @@ final class TagController extends AbstractController
         ]);
     }
 
-    #[Route('/tag/{id<\d+>}delete', name: 'app_admin_tag_delete', methods: ['POST'])]
+    #[Route('/tag/{id<\d+>}/delete', name: 'app_admin_tag_delete', methods: ['POST'])]
     public function delete(Tag $tag, Request $request): Response
     {
         if ($this->isCsrfTokenValid("delete-tag-{$tag->getId()}", $request->request->get('csrf_token'))) {
