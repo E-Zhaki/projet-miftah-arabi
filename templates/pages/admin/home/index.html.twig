@@ -10,7 +10,7 @@
         <div class="row g-3">
 
             <div class="col-sm-6 col-xl-4">
-                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #8c6a43, #c49b66); color: white;">
+                <div class="position-relative rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #8c6a43, #c49b66); color: white;">
                     <div class="fs-2"><i class="fa-solid fa-folder-open"></i></div>
                     <div>
                         <div class="fw-bold fs-2">{{ categories_counted }}</div>
@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-sm-6 col-xl-4">
-                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #5a7a5a, #7aaa7a); color: white;">
+                <div class="position-relative rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #7a5634, #a07050); color: white;">
                     <div class="fs-2"><i class="fa-solid fa-feather"></i></div>
                     <div>
                         <div class="fw-bold fs-2">{{ lessons_counted }}</div>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col-sm-6 col-xl-4">
-                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #4a6a8a, #6a9aba); color: white;">
+                <div class="position-relative rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #4a3728, #7a6a5a); color: white;">
                     <div class="fs-2"><i class="fa-solid fa-hashtag"></i></div>
                     <div>
                         <div class="fw-bold fs-2">{{ tags_counted }}</div>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="col-sm-6 col-xl-4">
-                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #7a5634, #a07050); color: white;">
+                <div class="position-relative rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #5c3d1e, #8c6a43); color: white;">
                     <div class="fs-2"><i class="fa-solid fa-users"></i></div>
                     <div>
                         <div class="fw-bold fs-2">{{ users_counted }}</div>
@@ -54,12 +54,13 @@
             </div>
 
             <div class="col-sm-6 col-xl-4">
-                <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #8a4a4a, #ba7a6a); color: white;">
+                <div class="position-relative rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #c49b66, #d8c3a5); color: white;">
                     <div class="fs-2"><i class="fa-solid fa-envelope"></i></div>
                     <div>
                         <div class="fw-bold fs-2">{{ contacts_counted }}</div>
                         <div class="small opacity-75">Messages reçus</div>
                     </div>
+                    <a href="{{ path('app_admin_contact_index') }}" class="stretched-link"></a>
                 </div>
             </div>
 

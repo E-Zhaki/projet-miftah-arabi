@@ -1,0 +1,52 @@
+{% extends 'themes/base_user.html.twig' %}
+
+{% block title %}Mes favoris{% endblock %}
+
+{% block description %}Consultez vos leçons favorites{% endblock %}
+
+{% block main %}
+    <div class="container py-5">
+
+        <h1 class="mb-1 fs-4 fw-semibold" style="color: #2f241b;">Mes favoris</h1>
+        <p class="text-muted mb-4">Les leçons que vous avez sauvegardées.</p>
+
+        {% include 'components/_alert.html.twig' %}
+
+        {% if favoriteLists is empty %}
+            <div class="text-center py-5">
+                <i class="fa-solid fa-bookmark fa-3x mb-3" style="color: #d8c3a5;"></i>
+                <p class="text-muted mb-3">Vous n'avez pas encore de leçons en favoris.</p>
+                <a href="{{ path('app_visitor_lesson_index') }}" class="btn btn-outline-primary btn-ma-outline">
+                    Découvrir les leçons
+                </a>
+            </div>
+        {% else %}
+            <div class="row g-3">
+                {% for favorite in favoriteLists %}
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="lesson-show-card p-4 h-100 d-flex flex-column justify-content-between" style="border: 1px solid rgba(196, 155, 102, 0.3);">
+                            <div>
+                                <span class="badge badge-category mb-2">{{ favorite.lesson.category.name }}</span>
+                                <h2 class="fs-5 fw-semibold mb-2" style="color: #2f241b;">{{ favorite.lesson.title }}</h2>
+                                <p class="text-muted small mb-3">{{ favorite.lesson.description }}</p>
+                                <p class="text-muted" style="font-size: 0.8rem;">
+                                    Ajouté le {{ favorite.createdAt|date('d/m/Y') }}
+                                </p>
+                            </div>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="{{ path('app_visitor_lesson_show', {'id': favorite.lesson.id, 'slug': favorite.lesson.slug}) }}" class="btn btn-sm btn-outline-primary">
+                                    Lire la leçon
+                                </a>
+                                <form action="{{ path('app_user_favorite_list_remove', {'id': favorite.id}) }}" method="post">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token('remove-favorite-'~favorite.id) }}">
+                                    <input type="submit" class="btn btn-sm btn-outline-primary" value="Retirer" onclick="return confirm('Retirer cette leçon de vos favoris ?')">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

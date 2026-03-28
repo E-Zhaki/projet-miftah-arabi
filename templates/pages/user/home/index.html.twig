@@ -28,11 +28,23 @@
 
             <div class="col-sm-6 col-lg-4">
                 <a href="{{ path('app_user_profile_index') }}" class="text-decoration-none">
-                    <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #4a6a8a, #6a9aba); color: white;">
+                    <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #7a5634, #a07050); color: white;">
                         <div class="fs-2"><i class="fa-solid fa-user"></i></div>
                         <div>
                             <div class="fw-semibold">Mon profil</div>
                             <div class="small opacity-75">Gérer mes informations</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ path('app_user_favorite_list_index') }}" class="text-decoration-none">
+                    <div class="rounded-3 p-4 d-flex align-items-center gap-3 shadow-sm" style="background: linear-gradient(135deg, #4a3728, #7a6a5a); color: white;">
+                        <div class="fs-2"><i class="fa-solid fa-bookmark"></i></div>
+                        <div>
+                            <div class="fw-semibold">Mes favoris</div>
+                            <div class="small opacity-75">Mes leçons sauvegardées</div>
                         </div>
                     </div>
                 </a>

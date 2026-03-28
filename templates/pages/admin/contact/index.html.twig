@@ -1,0 +1,75 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block description %}Consultez les messages de contact{% endblock %}
+
+{% block j_query %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block data_tables %}
+<link href="https://cdn.datatables.net/v/bs5/dt-2.3.7/datatables.min.css" rel="stylesheet" integrity="sha384-MnxpJFHU9dTMYXshJqBDA0d93sG4KKAFEEzynAaDqcPP7BYh11O5HxbJ6iLDWOXS" crossorigin="anonymous">
+<script src="https://cdn.datatables.net/v/bs5/dt-2.3.7/datatables.min.js" integrity="sha384-7rAjATpiK3MtvKnoDf5WQz4O8W+3kpl4Jm82apgJgNkeUmZ59yjJT6LqlJpYqhVK" crossorigin="anonymous"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/2.3.7/i18n/fr-FR.json',
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Liste des contacts</h1>
+
+    {% include 'components/_alert.html.twig' %}
+
+    <div class="table-responsive">
+        <table id="myTable" class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Reçu le</th>
+                    <th>Statut</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.name }}</td>
+                        <td><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></td>
+                        <td>{{ contact.message|u.truncate(60, '...') }}</td>
+                        <td>{{ contact.createdAt|format_date() }}</td>
+                        <td>
+                            {% if contact.isProcessed %}
+                                <span class="badge text-bg-success">Traité</span>
+                            {% else %}
+                                <span class="badge text-bg-warning">En attente</span>
+                            {% endif %}
+                        </td>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-center align-items-center gap-1">
+                                {% if not contact.isProcessed %}
+                                    <form action="{{ path('app_admin_contact_mark_as_processed', {'id': contact.id}) }}" method="post">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token('mark-contact-'~contact.id) }}">
+                                        <input type="submit" class="btn btn-sm btn-success" value="Marquer traité">
+                                    </form>
+                                {% endif %}
+                                <form action="{{ path('app_admin_contact_delete', {'id': contact.id}) }}" method="post">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-contact-'~contact.id) }}">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Supprimer" onclick="return confirm('Confirmer la suppression de ce message ?')">
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

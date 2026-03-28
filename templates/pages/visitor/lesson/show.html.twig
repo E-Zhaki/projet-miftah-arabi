@@ -16,6 +16,7 @@
 
     <section class="lesson-show-section">
         <div class="container py-5">
+            {% include 'components/_alert.html.twig' %}
             <div class="row justify-content-center">
                 <div class="col-lg-9">
                     <div class="lesson-show-card p-4 p-lg-5">
@@ -89,10 +90,18 @@
                             Publié le {{ lesson.publishedAt|date('d/m/Y') }}
                         </p>
 
-                        <div class="mt-4">
+                        <div class="mt-4 d-flex flex-wrap gap-2">
                             <a href="{{ path('app_visitor_lesson_index') }}" class="btn btn-outline-primary btn-ma-outline">
                                 ← Retour aux leçons
                             </a>
+                            {% if is_granted('ROLE_USER') %}
+                                <form action="{{ path('app_user_favorite_list_add', {'id': lesson.id}) }}" method="post">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token('add-favorite-'~lesson.id) }}">
+                                    <button type="submit" class="btn btn-outline-primary btn-ma-outline">
+                                        <i class="fa-solid fa-bookmark"></i> Ajouter aux favoris
+                                    </button>
+                                </form>
+                            {% endif %}
                         </div>
 
                     </div>
