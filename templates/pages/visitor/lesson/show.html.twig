@@ -55,6 +55,36 @@
                             {{ lesson.content|raw }}
                         </div>
 
+                        {% if lesson.resources is not empty %}
+                            <div class="mt-5">
+                                <h2 class="section-title mb-4">Ressources</h2>
+                                {% for resource in lesson.resources %}
+                                    <div class="mb-4">
+                                        <p class="fw-semibold mb-2">{{ resource.title }}</p>
+                                        {% if resource.type == 'video' %}
+                                            <div class="ratio ratio-16x9">
+                                                <iframe
+                                                    src="{{ resource.url }}"
+                                                    title="{{ resource.title }}"
+                                                    allowfullscreen
+                                                ></iframe>
+                                            </div>
+                                        {% else %}
+                                            <a href="{{ resource.url }}" target="_blank" class="btn btn-outline-primary btn-ma-outline">
+                                                {% if resource.type == 'pdf' %}
+                                                    <i class="fa-solid fa-file-pdf"></i> Télécharger le PDF
+                                                {% elseif resource.type == 'audio' %}
+                                                    <i class="fa-solid fa-headphones"></i> Écouter l'audio
+                                                {% else %}
+                                                    <i class="fa-solid fa-link"></i> Accéder à la ressource
+                                                {% endif %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
                         <p class="lesson-date mt-5">
                             Publié le {{ lesson.publishedAt|date('d/m/Y') }}
                         </p>
