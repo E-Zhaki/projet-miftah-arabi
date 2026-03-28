@@ -1,0 +1,43 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Nouvelle ressource{% endblock %}
+
+{% block description %}Ajoutez une nouvelle ressource{% endblock %}
+
+{% block main %}
+
+    <h1 class="text-center my-3 display-5">Nouvelle ressource</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5 mx-auto">
+                {{ form_start(resourceForm) }}
+                    <div class="mb-3">
+                        <label for="resource_form_title">Titre</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.title) }}</div>
+                        {{ form_widget(resourceForm.title, {'attr': {'class': 'form-control', 'autofocus': 'autofocus'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="resource_form_type">Type</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.type) }}</div>
+                        {{ form_widget(resourceForm.type, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="resource_form_url">URL</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.url) }}</div>
+                        {{ form_widget(resourceForm.url, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="resource_form_lesson">Leçon associée</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.lesson) }}</div>
+                        {{ form_widget(resourceForm.lesson, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-primary shadow" value="Envoyer">
+                    </div>
+                {{ form_end(resourceForm) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

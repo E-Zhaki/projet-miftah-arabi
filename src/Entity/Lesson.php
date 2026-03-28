@@ -98,9 +98,16 @@ class Lesson
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'lessons')]
     private Collection $tags;
 
+    /**
+     * @var Collection<int, Resource>
+     */
+    #[ORM\OneToMany(targetEntity: Resource::class, mappedBy: 'lesson', orphanRemoval: true)]
+    private Collection $resources;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->resources = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -309,6 +316,35 @@ class Lesson
     public function removeTag(Tag $tag): static
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Resource>
+     */
+    public function getResources(): Collection
+    {
+        return $this->resources;
+    }
+
+    public function addResource(Resource $resource): static
+    {
+        if (!$this->resources->contains($resource)) {
+            $this->resources->add($resource);
+            $resource->setLesson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResource(Resource $resource): static
+    {
+        if ($this->resources->removeElement($resource)) {
+            if ($resource->getLesson() === $this) {
+                $resource->setLesson(null);
+            }
+        }
 
         return $this;
     }

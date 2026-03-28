@@ -1,0 +1,103 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}{{ lesson.title }} | Miftah Arabi{% endblock %}
+
+{% block description %}{{ lesson.description }}{% endblock %}
+
+{% block keywords %}{{ lesson.keywords }}{% endblock %}
+
+{% block main %}
+    <section class="page-banner">
+        <div class="container text-center">
+            <span class="section-subtitle section-subtitle-light">{{ lesson.category.name }}</span>
+            <h1 class="page-banner-title mt-2">{{ lesson.title }}</h1>
+        </div>
+    </section>
+
+    <section class="lesson-show-section">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="lesson-show-card p-4 p-lg-5">
+
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge badge-category">{{ lesson.category.name }}</span>
+                            <span class="badge badge-level">
+                                {% if lesson.level == 'debutant' %}
+                                    Débutant
+                                {% elseif lesson.level == 'intermediaire' %}
+                                    Intermédiaire
+                                {% elseif lesson.level == 'avance' %}
+                                    Avancé
+                                {% else %}
+                                    {{ lesson.level }}
+                                {% endif %}
+                            </span>
+                            {% for tag in lesson.tags %}
+                                <span class="badge badge-tag">{{ tag.name }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <p class="section-text mb-4">{{ lesson.description }}</p>
+
+                        {% if lesson.image %}
+                            <div class="mb-4 text-center">
+                                <img
+                                    src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
+                                    alt="{{ lesson.title }}"
+                                    class="img-fluid rounded-3"
+                                    style="max-height: 420px; object-fit: cover; width: 100%;"
+                                >
+                            </div>
+                        {% endif %}
+
+                        <div class="lesson-content mt-4">
+                            {{ lesson.content|raw }}
+                        </div>
+
+                        {% if lesson.resources is not empty %}
+                            <div class="mt-5">
+                                <h2 class="section-title mb-4">Ressources</h2>
+                                {% for resource in lesson.resources %}
+                                    <div class="mb-4">
+                                        <p class="fw-semibold mb-2">{{ resource.title }}</p>
+                                        {% if resource.type == 'video' %}
+                                            <div class="ratio ratio-16x9">
+                                                <iframe
+                                                    src="{{ resource.url }}"
+                                                    title="{{ resource.title }}"
+                                                    allowfullscreen
+                                                ></iframe>
+                                            </div>
+                                        {% else %}
+                                            <a href="{{ resource.url }}" target="_blank" class="btn btn-outline-primary btn-ma-outline">
+                                                {% if resource.type == 'pdf' %}
+                                                    <i class="fa-solid fa-file-pdf"></i> Télécharger le PDF
+                                                {% elseif resource.type == 'audio' %}
+                                                    <i class="fa-solid fa-headphones"></i> Écouter l'audio
+                                                {% else %}
+                                                    <i class="fa-solid fa-link"></i> Accéder à la ressource
+                                                {% endif %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <p class="lesson-date mt-5">
+                            Publié le {{ lesson.publishedAt|date('d/m/Y') }}
+                        </p>
+
+                        <div class="mt-4">
+                            <a href="{{ path('app_visitor_lesson_index') }}" class="btn btn-outline-primary btn-ma-outline">
+                                ← Retour aux leçons
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

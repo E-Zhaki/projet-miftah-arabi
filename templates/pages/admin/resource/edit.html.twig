@@ -1,0 +1,44 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Modifier la ressource{% endblock %}
+
+{% block description %}Modifiez une ressource{% endblock %}
+
+{% block main %}
+
+    <h1 class="text-center my-3 display-5">Modifier la ressource</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5 mx-auto">
+                {{ form_start(resourceForm) }}
+                    <div class="mb-3">
+                        <label for="resource_form_title">Titre</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.title) }}</div>
+                        {{ form_widget(resourceForm.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="resource_form_type">Type</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.type) }}</div>
+                        {{ form_widget(resourceForm.type, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="resource_form_url">URL</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.url) }}</div>
+                        {{ form_widget(resourceForm.url, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="resource_form_lesson">Leçon associée</label>
+                        <div class="text-danger">{{ form_errors(resourceForm.lesson) }}</div>
+                        {{ form_widget(resourceForm.lesson, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="d-flex gap-2">
+                        <input formnovalidate type="submit" class="btn btn-primary shadow" value="Modifier">
+                        <a href="{{ path('app_admin_resource_index') }}" class="btn btn-secondary">Annuler</a>
+                    </div>
+                {{ form_end(resourceForm) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

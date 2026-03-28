@@ -83,3 +83,19 @@
         min-height: 220px;
     }
 }
+
+.lesson-show-section {
+    padding: 4rem 0 5rem;
+}
+
+.lesson-show-card {
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 24px;
+    box-shadow: $ma-box-shadow;
+}
+
+.lesson-content {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: $ma-dark;
+}
