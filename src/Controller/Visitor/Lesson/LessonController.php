@@ -53,6 +53,24 @@ final class LessonController extends AbstractController
         ]);
     }
 
+    #[Route('/lecon/{id<\d+>}/{slug}', name: 'app_visitor_lesson_show', methods: ['GET'])]
+    public function show(int $id, string $slug): Response
+    {
+        $lesson = $this->lessonRepository->findOneBy([
+            'id' => $id,
+            'slug' => $slug,
+            'isPublished' => true,
+        ]);
+
+        if (!$lesson) {
+            throw $this->createNotFoundException('Leçon introuvable.');
+        }
+
+        return $this->render('pages/visitor/lesson/show.html.twig', [
+            'lesson' => $lesson,
+        ]);
+    }
+
     #[Route('/lecon/lecons-filtre-par-categorie/{id<\d+>}/{slug}', name: 'app_visitor_lesson_filter_by_category', methods: ['GET'])]
     public function filterLessonsByCategory(Category $category, Request $request): Response
     {
