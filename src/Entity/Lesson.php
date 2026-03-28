@@ -104,10 +104,17 @@ class Lesson
     #[ORM\OneToMany(targetEntity: Resource::class, mappedBy: 'lesson', orphanRemoval: true)]
     private Collection $resources;
 
+    /**
+     * @var Collection<int, FavoriteList>
+     */
+    #[ORM\OneToMany(targetEntity: FavoriteList::class, mappedBy: 'lesson', orphanRemoval: true)]
+    private Collection $favoriteLists;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
         $this->resources = new ArrayCollection();
+        $this->favoriteLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -343,6 +350,35 @@ class Lesson
         if ($this->resources->removeElement($resource)) {
             if ($resource->getLesson() === $this) {
                 $resource->setLesson(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FavoriteList>
+     */
+    public function getFavoriteLists(): Collection
+    {
+        return $this->favoriteLists;
+    }
+
+    public function addFavoriteList(FavoriteList $favoriteList): static
+    {
+        if (!$this->favoriteLists->contains($favoriteList)) {
+            $this->favoriteLists->add($favoriteList);
+            $favoriteList->setLesson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteList(FavoriteList $favoriteList): static
+    {
+        if ($this->favoriteLists->removeElement($favoriteList)) {
+            if ($favoriteList->getLesson() === $this) {
+                $favoriteList->setLesson(null);
             }
         }
 

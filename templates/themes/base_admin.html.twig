@@ -92,7 +92,7 @@
 	</head>
 	<body>
 		<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-			<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">MA</a>
+			<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="{{path('app_admin_home')}}">MA</a>
 			<ul class="navbar-nav flex-row d-md-none">
 				<li class="nav-item text-nowrap">
 					<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,7 +142,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="{{path('app_admin_contact_index')}}">
                                         <i class="fa-solid fa-address-book"></i>
                                         Contacts
                                     </a>
@@ -151,12 +151,6 @@
                                     <a class="nav-link d-flex align-items-center gap-2" href="{{path('app_admin_user_index')}}">
                                         <i class="fa-solid fa-users"></i>
                                         Utilisateurs
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <i class="fa-solid fa-book-bookmark"></i>
-                                        Favoris
                                     </a>
                                 </li>
                             </ul>
@@ -168,12 +162,6 @@
                                     <a class="nav-link d-flex align-items-center gap-2" href="{{path('app_admin_profile_index')}}">
                                         <i class="fa-solid fa-user"></i>
                                         Mon profil
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <i class="fa-solid fa-gear"></i>
-                                        Paramètres
                                     </a>
                                 </li>
                             </ul>

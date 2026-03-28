@@ -92,9 +92,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Lesson::class, mappedBy: 'user')]
     private Collection $lessons;
 
+    /**
+     * @var Collection<int, FavoriteList>
+     */
+    #[ORM\OneToMany(targetEntity: FavoriteList::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $favoriteLists;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
+        $this->favoriteLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -274,6 +281,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($lesson->getUser() === $this) {
                 $lesson->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FavoriteList>
+     */
+    public function getFavoriteLists(): Collection
+    {
+        return $this->favoriteLists;
+    }
+
+    public function addFavoriteList(FavoriteList $favoriteList): static
+    {
+        if (!$this->favoriteLists->contains($favoriteList)) {
+            $this->favoriteLists->add($favoriteList);
+            $favoriteList->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteList(FavoriteList $favoriteList): static
+    {
+        if ($this->favoriteLists->removeElement($favoriteList)) {
+            if ($favoriteList->getUser() === $this) {
+                $favoriteList->setUser(null);
             }
         }
 
