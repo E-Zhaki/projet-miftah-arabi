@@ -4,6 +4,7 @@ namespace App\Controller\User\FavoriteList;
 
 use App\Entity\FavoriteList;
 use App\Entity\Lesson;
+use App\Entity\User;
 use App\Repository\FavoriteListRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,7 +44,9 @@ final class FavoriteListController extends AbstractController
 
             if (!$existing) {
                 $favorite = new FavoriteList();
-                $favorite->setUser($this->getUser());
+                /** @var User $user */
+                $user = $this->getUser();
+                $favorite->setUser($user);
                 $favorite->setLesson($lesson);
                 $favorite->setCreatedAt(new \DateTimeImmutable());
 
