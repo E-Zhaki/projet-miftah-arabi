@@ -30,6 +30,8 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
@@ -84,7 +86,7 @@
                                     <label for="registration_form_password_first">Mot de passe</label>
                                     <div class="text-danger" style="font-size:0.8rem;">{{ form_errors(registrationForm.password.first) }}</div>
                                     {{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control', 'placeholder': 'Au moins 12 caractères'}}) }}
-                                    <p class="ma-auth-hint"><i class="fa-solid fa-circle-exclamation"></i> Minuscule, majuscule, chiffre et caractère spécial requis.</p>
+                                    <p class="ma-auth-hint"><i class="fa-solid fa-circle-exclamation"></i> Au moins une lettre minuscule et majuscule, un chiffre et un caractère spécial.</p>
                                 </div>
 
                                 <div class="mb-3">
