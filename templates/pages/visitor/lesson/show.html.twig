@@ -6,6 +6,11 @@
 
 {% block keywords %}{{ lesson.keywords }}{% endblock %}
 
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ lesson.title }} — Miftah Arabi{% endblock %}
+{% block og_description %}{{ lesson.description }}{% endblock %}
+{% block og_image %}{% if lesson.image %}{{ app.request.schemeAndHttpHost }}/images/lessons/{{ lesson.image }}{% else %}{{ app.request.schemeAndHttpHost }}/images/statics/logomiftah.webp{% endif %}{% endblock %}
+
 {% block main %}
     <section class="page-banner">
         <div class="container text-center">

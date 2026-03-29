@@ -1,0 +1,87 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Mentions légales | Miftah Arabi{% endblock %}
+
+{% block description %}
+Mentions légales de la plateforme Miftah Arabi, plateforme d'apprentissage de la langue arabe.
+{% endblock %}
+
+{% block keywords %}
+mentions légales, RGPD, données personnelles, Miftah Arabi
+{% endblock %}
+
+{% block main %}
+<section class="container my-5">
+    <header class="text-center mb-5">
+        <h1 class="display-5">Mentions légales</h1>
+        <p class="text-muted small">
+            Dernière mise à jour : mars 2026
+        </p>
+    </header>
+
+    <article class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4 p-lg-5">
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">1. Éditeur du site</h2>
+                <p>
+                    Le site <strong>Miftah Arabi</strong> est un projet pédagogique personnel réalisé dans le cadre
+                    d'une formation Développeur Web et Web Mobile (DWWM).
+                </p>
+                <ul class="list-unstyled">
+                    <li><strong>Auteur :</strong> Zhaki El Ouarroudi</li>
+                    <li><strong>Contact :</strong> via le <a href="{{ path('app_visitor_contact_index') }}">formulaire de contact</a></li>
+                </ul>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">2. Hébergement</h2>
+                <p>
+                    Ce site est hébergé localement dans le cadre du projet de formation.
+                    En production, les informations d'hébergeur seront précisées ici.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">3. Données personnelles (RGPD)</h2>
+                <p>
+                    Conformément au Règlement Général sur la Protection des Données (RGPD),
+                    vous disposez des droits suivants concernant vos données personnelles :
+                </p>
+                <ul>
+                    <li>Droit d'accès à vos données</li>
+                    <li>Droit de rectification</li>
+                    <li>Droit à l'effacement (« droit à l'oubli »)</li>
+                    <li>Droit d'opposition au traitement</li>
+                </ul>
+                <p>
+                    Les données collectées (nom, prénom, adresse email) sont uniquement utilisées
+                    pour la gestion de votre compte et ne sont jamais transmises à des tiers.
+                </p>
+                <p>
+                    Pour exercer vos droits, contactez-nous via le
+                    <a href="{{ path('app_visitor_contact_index') }}">formulaire de contact</a>.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 mb-3">4. Cookies</h2>
+                <p>
+                    Ce site utilise uniquement des cookies techniques nécessaires au fonctionnement
+                    de la plateforme (session utilisateur, sécurité CSRF).
+                    Aucun cookie publicitaire ou de tracking n'est utilisé.
+                </p>
+            </section>
+
+            <section class="mb-0">
+                <h2 class="h4 mb-3">5. Propriété intellectuelle</h2>
+                <p>
+                    L'ensemble des contenus présents sur ce site (textes, images, structure) est
+                    protégé par le droit d'auteur. Toute reproduction sans autorisation préalable est interdite.
+                </p>
+            </section>
+
+        </div>
+    </article>
+</section>
+{% endblock %}

@@ -13,6 +13,15 @@
         <meta name="publisher" content="Miftah Arabi">
         <meta name="theme-color" content="#cbcbb1">
 
+        {# Open Graph #}
+        <meta property="og:site_name" content="Miftah Arabi">
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+        <meta property="og:title" content="{% block og_title %}Miftah Arabi — Apprendre l'arabe en ligne{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}Plateforme d'apprentissage de la langue arabe pour francophones : cours clairs, progressifs et accessibles à tous les niveaux.{% endblock %}">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:image" content="{% block og_image %}{{ app.request.schemeAndHttpHost }}/images/statics/logomiftah.webp{% endblock %}">
+
         {# Favicon #}
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
         <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -142,7 +151,21 @@
 
         <footer>
             <div class="container">
-                <p class="mb-0 text-center">Miftah Arabi</p>
+                <ul class="list-inline text-center mb-1" style="font-size: 0.82rem;">
+                    <li class="list-inline-item">
+                        <a class="ma-footer-link" href="{{ path('app_visitor_legal_notice') }}">Mentions légales</a>
+                    </li>
+                    <li class="list-inline-item mx-1">·</li>
+                    <li class="list-inline-item">
+                        <a class="ma-footer-link" href="{{ path('app_visitor_terms_of_service') }}">CGU</a>
+                    </li>
+                    <li class="list-inline-item mx-1">·</li>
+                    <li class="list-inline-item">
+                        <a class="ma-footer-link" href="{{ path('app_visitor_contact_index') }}">Contact</a>
+                    </li>
+                    <li class="list-inline-item mx-1">·</li>
+                    <li class="list-inline-item">&copy; {{ "now"|date("Y") }} Miftah Arabi</li>
+                </ul>
             </div>
         </footer>
     </body>

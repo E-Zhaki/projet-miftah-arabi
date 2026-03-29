@@ -27,4 +27,16 @@ footer {
     background-color: $ma-auth-bg;
     color: $ma-secondary;
     font-size: 0.9rem;
+
+    .ma-footer-link,
+    .ma-footer-link:link,
+    .ma-footer-link:visited {
+        color: $ma-white !important;
+        text-decoration: none;
+    }
+
+    .ma-footer-link:hover {
+        color: $ma-accent !important;
+        text-decoration: underline;
+    }
 }
