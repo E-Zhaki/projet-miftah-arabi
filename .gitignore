@@ -42,4 +42,5 @@ yarn-error.log
 ###> claude code ###
 CLAUDE.md
 .claude/
+session.md
 ###< claude code ###
