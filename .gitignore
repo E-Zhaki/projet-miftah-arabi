@@ -38,3 +38,8 @@ yarn-error.log
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
+
+###> claude code ###
+CLAUDE.md
+.claude/
+###< claude code ###
