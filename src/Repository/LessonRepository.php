@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Lesson;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,47 +17,32 @@ class LessonRepository extends ServiceEntityRepository
         parent::__construct($registry, Lesson::class);
     }
 
+    public function countByCategory(Category $category): int
+    {
+        return (int) $this->createQueryBuilder('lesson')
+            ->select('COUNT(lesson.id)')
+            ->where('lesson.category = :category')
+            ->setParameter('category', $category)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     /**
-     * Cette méthode filtre les Lessons en fonction du tag précisé.
+     * Cette méthode filtre les lessons en fonction du tag précisé.
      *
      * @return array<int, Lesson>
      */
-    public function filterLessonsByTag(int $tag_id): array
+    public function filterLessonsByTag(int $tagId): array
     {
-        return $this->createQueryBuilder('p')
-                    ->join('p.tags', 't')
-                    ->select('p')
-                    ->where('t.id = :id')
-                    ->andWhere('p.isPublished = :val')
-                    ->setParameter('id', $tag_id)
-                    ->setParameter('val', true)
-                    ->orderBy('p.publishedAt', 'DESC')
-                    ->getQuery()
-                    ->getResult();
+        return $this->createQueryBuilder('lesson')
+            ->join('lesson.tags', 'tag')
+            ->select('lesson')
+            ->where('tag.id = :id')
+            ->andWhere('lesson.isPublished = :isPublished')
+            ->setParameter('id', $tagId)
+            ->setParameter('isPublished', true)
+            ->orderBy('lesson.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
-
-    //    /**
-    //     * @return Lesson[] Returns an array of Lesson objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Lesson
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }

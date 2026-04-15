@@ -1,4 +1,4 @@
-// Hauteur minimale pleine page
+﻿// Hauteur minimale pleine page
 .ma-auth-body main {
     min-height: 100vh;
     display: flex;
@@ -57,7 +57,7 @@
     }
 }
 
-// Autofill navigateur — neutraliser le fond bleu
+// Autofill navigateur - neutraliser le fond bleu
 .ma-auth-bg .form-control:-webkit-autofill,
 .ma-auth-bg .form-control:-webkit-autofill:hover,
 .ma-auth-bg .form-control:-webkit-autofill:focus {

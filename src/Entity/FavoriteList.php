@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\FavoriteListRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Table(name: 'favorite_list', uniqueConstraints: [
+    new ORM\UniqueConstraint(name: 'uniq_favorite_user_lesson', columns: ['user_id', 'lesson_id']),
+])]
 #[ORM\Entity(repositoryClass: FavoriteListRepository::class)]
 class FavoriteList
 {

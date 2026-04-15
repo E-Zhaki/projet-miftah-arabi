@@ -56,7 +56,11 @@
                         <td class="align-middle">
                             <div class="d-flex justify-content-center align-items-center gap-1">
                                 {% if lesson.image %}
-                                    <img  src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('admin_lesson_thumb') }}" alt="{{ lesson.title }}">
+                                    <img
+                                        src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('admin_lesson_thumb') }}"
+                                        alt="{{ lesson.title }}"
+                                        style="width: 100px; height: 100px; object-fit: cover; border-radius: 12px; display: block;"
+                                    >
                                 {% else %}
                                     <p class="text-center">---</p>
                                 {% endif %}

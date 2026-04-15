@@ -5,6 +5,7 @@ namespace App\Controller\Admin\Category;
 use App\Entity\Category;
 use App\Form\Admin\CategoryFormType;
 use App\Repository\CategoryRepository;
+use App\Repository\LessonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,7 @@ final class CategoryController extends AbstractController
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
         private readonly CategoryRepository $categoryRepository,
+        private readonly LessonRepository $lessonRepository,
     ) {
     }
 
@@ -83,6 +85,12 @@ final class CategoryController extends AbstractController
     public function delete(Category $category, Request $request): Response
     {
         if ($this->isCsrfTokenValid("delete-category-{$category->getId()}", $request->request->get('csrf_token'))) {
+            if ($this->lessonRepository->countByCategory($category) > 0) {
+                $this->addFlash('warning', 'Impossible de supprimer cette catégorie car des leçons y sont encore rattachées.');
+
+                return $this->redirectToRoute('app_admin_category_index');
+            }
+
             $this->entityManager->remove($category);
             $this->entityManager->flush();
 

@@ -1,0 +1,45 @@
+﻿<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="1000" rx="36" fill="#F7F1E8"/>
+  <rect x="34" y="34" width="932" height="932" rx="30" fill="url(#bg)"/>
+  <circle cx="766" cy="188" r="78" fill="#D8C3A5" fill-opacity="0.65"/>
+  <g filter="url(#shadow)">
+    <rect x="130" y="144" width="332" height="244" rx="28" fill="#FFFDF9"/>
+    <circle cx="220" cy="229" r="40" fill="#D8C3A5"/>
+    <rect x="282" y="200" width="116" height="18" rx="9" fill="#C49B66"/>
+    <rect x="282" y="238" width="132" height="16" rx="8" fill="#D8C3A5"/>
+    <rect x="180" y="302" width="232" height="24" rx="12" fill="#8C6A43"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="522" y="210" width="254" height="180" rx="28" fill="#FFFDF9"/>
+    <path d="M584 258L649 309L714 258" stroke="#8C6A43" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="572" y="250" width="154" height="102" rx="18" stroke="#C49B66" stroke-width="12"/>
+    <circle cx="728" cy="236" r="26" fill="#8C6A43"/>
+    <path d="M718 236L725 243L740 227" stroke="#FFF9F1" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="184" y="502" width="632" height="292" rx="34" fill="#FFF9F1"/>
+    <path d="M278 600H566" stroke="#D8C3A5" stroke-width="18" stroke-linecap="round"/>
+    <path d="M278 652H720" stroke="#D8C3A5" stroke-width="18" stroke-linecap="round"/>
+    <path d="M278 704H604" stroke="#D8C3A5" stroke-width="18" stroke-linecap="round"/>
+    <rect x="640" y="566" width="108" height="108" rx="26" fill="#8C6A43"/>
+    <path d="M684 597C699.464 597 712 609.536 712 625V631H656V625C656 609.536 668.536 597 684 597Z" fill="#FFF9F1"/>
+    <circle cx="684" cy="584" r="22" fill="#FFF9F1"/>
+  </g>
+  <path d="M288 838H712" stroke="#8C6A43" stroke-width="18" stroke-linecap="round" opacity="0.22"/>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="62" x2="918" y2="946" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F1"/>
+      <stop offset="1" stop-color="#F0E0CD"/>
+    </linearGradient>
+    <filter id="shadow" x="98" y="118" width="750" height="708" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="14"/>
+      <feGaussianBlur stdDeviation="16"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.184314 0 0 0 0 0.141176 0 0 0 0 0.105882 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_3"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_3" result="shape"/>
+    </filter>
+  </defs>
+</svg>

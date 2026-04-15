@@ -1,0 +1,41 @@
+﻿<svg width="960" height="1100" viewBox="0 0 960 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="1100" rx="36" fill="#F7F1E8"/>
+  <rect x="34" y="34" width="892" height="1032" rx="30" fill="url(#bg)"/>
+  <circle cx="736" cy="214" r="88" fill="#D8C3A5" fill-opacity="0.6"/>
+  <path d="M222 838H738" stroke="#8C6A43" stroke-width="20" stroke-linecap="round"/>
+  <path d="M308 838L390 640H570L652 838" stroke="#8C6A43" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M480 304C401.576 304 336 367.968 336 446.5C336 584.265 457.764 676.095 470.772 685.531C476.154 689.364 483.846 689.364 489.228 685.531C502.236 676.095 624 584.265 624 446.5C624 367.968 558.424 304 480 304Z" fill="#FFF9F1"/>
+  <path d="M480 346C424.772 346 379 391.557 379 446.5C379 534.829 447.483 602.219 480 628.188C512.517 602.219 581 534.829 581 446.5C581 391.557 535.228 346 480 346Z" fill="#D8C3A5"/>
+  <path d="M420 444C446.667 425.333 486.667 425.333 540 444" stroke="#FFF9F1" stroke-width="12" stroke-linecap="round"/>
+  <path d="M405 498C448.474 476.11 511.526 476.11 555 498" stroke="#FFF9F1" stroke-width="12" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <rect x="164" y="168" width="208" height="172" rx="24" fill="#FFFDF9"/>
+    <rect x="196" y="205" width="86" height="14" rx="7" fill="#C49B66"/>
+    <rect x="196" y="238" width="132" height="16" rx="8" fill="#D8C3A5"/>
+    <rect x="196" y="271" width="104" height="16" rx="8" fill="#8C6A43" fill-opacity="0.18"/>
+    <circle cx="316" cy="264" r="28" fill="#F7F1E8"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="596" y="676" width="206" height="158" rx="24" fill="#FFFDF9"/>
+    <path d="M650 743H748" stroke="#D8C3A5" stroke-width="14" stroke-linecap="round"/>
+    <path d="M650 780H716" stroke="#D8C3A5" stroke-width="14" stroke-linecap="round"/>
+    <rect x="638" y="710" width="42" height="42" rx="12" fill="#8C6A43"/>
+  </g>
+  <path d="M271 854C271 797.115 317.115 751 374 751H586C642.885 751 689 797.115 689 854V882H271V854Z" fill="#8C6A43" fill-opacity="0.12"/>
+  <defs>
+    <linearGradient id="bg" x1="74" y1="58" x2="874" y2="1038" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F1"/>
+      <stop offset="1" stop-color="#EFE0CE"/>
+    </linearGradient>
+    <filter id="shadow" x="132" y="144" width="702" height="722" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="14"/>
+      <feGaussianBlur stdDeviation="16"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.184314 0 0 0 0 0.141176 0 0 0 0 0.105882 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_2" result="shape"/>
+    </filter>
+  </defs>
+</svg>

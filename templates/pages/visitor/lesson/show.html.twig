@@ -47,12 +47,12 @@
                         <p class="section-text mb-4">{{ lesson.description }}</p>
 
                         {% if lesson.image %}
-                            <div class="mb-4 text-center">
+                            <div class="mb-4 text-center" style="overflow: hidden; border-radius: 1rem;">
                                 <img
                                     src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
                                     alt="{{ lesson.title }}"
                                     class="img-fluid rounded-3"
-                                    style="max-height: 420px; object-fit: cover; width: 100%;"
+                                    style="width: 100%; max-height: 420px; object-fit: cover; display: block;"
                                 >
                             </div>
                         {% endif %}

@@ -1,4 +1,4 @@
-{% extends 'themes/base_visitor.html.twig' %}
+﻿{% extends 'themes/base_visitor.html.twig' %}
 
 {% block title %}Leçons d'arabe | Miftah Arabi{% endblock %}
 
@@ -35,6 +35,12 @@ leçons arabe, cours d'arabe, arabe littéraire, apprendre l'arabe, alphabet ara
                             </button>
 
                             <ul class="dropdown-menu w-100">
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app_visitor_lesson_index') }}">
+                                        Toutes les catégories
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
                                 {% if categories is not empty %}
                                     {% for category in categories %}
                                         <li>
@@ -57,6 +63,12 @@ leçons arabe, cours d'arabe, arabe littéraire, apprendre l'arabe, alphabet ara
                             </button>
 
                             <ul class="dropdown-menu w-100">
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app_visitor_lesson_index') }}">
+                                        Tous les tags
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
                                 {% if tags is not empty %}
                                     {% for tag in tags %}
                                         <li>
@@ -79,6 +91,12 @@ leçons arabe, cours d'arabe, arabe littéraire, apprendre l'arabe, alphabet ara
                             </button>
 
                             <ul class="dropdown-menu w-100">
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app_visitor_lesson_index') }}">
+                                        Tous les niveaux
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
                                 {% if levels is not empty %}
                                     {% for label, value in levels %}
                                         <li>
@@ -109,12 +127,14 @@ leçons arabe, cours d'arabe, arabe littéraire, apprendre l'arabe, alphabet ara
                                             class="lesson-list-image"
                                             src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
                                             alt="{{ lesson.title }}"
+                                            style="width: 100%; height: 100%; min-height: 260px; max-height: 320px; object-fit: cover; display: block;"
                                         >
                                     {% else %}
                                         <img
                                             class="lesson-list-image"
                                             src="/images/statics/default-lesson-image.png"
                                             alt="{{ lesson.title }}"
+                                            style="width: 100%; height: 100%; min-height: 260px; max-height: 320px; object-fit: cover; display: block;"
                                         >
                                     {% endif %}
                                 </div>

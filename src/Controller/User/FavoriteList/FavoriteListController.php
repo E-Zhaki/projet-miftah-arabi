@@ -36,6 +36,7 @@ final class FavoriteListController extends AbstractController
     #[Route('/favoris/{id<\d+>}/add', name: 'app_user_favorite_list_add', methods: ['POST'])]
     public function add(Lesson $lesson, Request $request): Response
     {
+
         if ($this->isCsrfTokenValid("add-favorite-{$lesson->getId()}", $request->request->get('csrf_token'))) {
             $existing = $this->favoriteListRepository->findOneBy([
                 'user' => $this->getUser(),
@@ -68,6 +69,10 @@ final class FavoriteListController extends AbstractController
     #[Route('/favoris/{id<\d+>}/remove', name: 'app_user_favorite_list_remove', methods: ['POST'])]
     public function remove(FavoriteList $favoriteList, Request $request): Response
     {
+        if ($favoriteList->getUser() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('Vous ne pouvez pas supprimer ce favori.');
+        }
+
         if ($this->isCsrfTokenValid("remove-favorite-{$favoriteList->getId()}", $request->request->get('csrf_token'))) {
             $this->entityManager->remove($favoriteList);
             $this->entityManager->flush();

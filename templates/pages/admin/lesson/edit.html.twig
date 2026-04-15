@@ -59,7 +59,11 @@
                     <div class="row mb-3">
                         <div class="col-md-6 text-center">
                             {% if lesson.image %}
-                                <img  src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('admin_lesson_thumb') }}" alt="{{ lesson.title }}">
+                                <img
+                                    src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('admin_lesson_thumb') }}"
+                                    alt="{{ lesson.title }}"
+                                    style="width: 220px; height: 140px; object-fit: cover; border-radius: 14px; display: inline-block;"
+                                >
                             {% else %}
                                 <p>Aucune image existante</p>
                             {% endif %}

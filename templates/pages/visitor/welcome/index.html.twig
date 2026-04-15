@@ -1,4 +1,4 @@
-{% extends 'themes/base_visitor.html.twig' %}
+﻿{% extends 'themes/base_visitor.html.twig' %}
 
 {% block title %}Accueil | Miftah Arabi{% endblock %}
 
@@ -37,11 +37,11 @@ Plateforme d'apprentissage de la langue arabe pour francophones : cours clairs, 
                     </div>
                 </div>
 
-                <div class="col-lg-6 text-center">
+                <div class="col-lg-6">
                     <div class="hero-image-wrapper">
                         <img
-                            src="/images/statics/logomiftah.webp"
-                            alt="Logo Miftah Arabi"
+                            src="/images/statics/hero-miftah-arabi.svg"
+                            alt="Illustration Miftah Arabi"
                             class="img-fluid hero-image"
                         >
                     </div>
@@ -56,8 +56,8 @@ Plateforme d'apprentissage de la langue arabe pour francophones : cours clairs, 
                 <div class="col-lg-5 text-center">
                     <div class="about-image-wrapper">
                         <img
-                            src="/images/statics/livre.png"
-                            alt="Présentation de Miftah Arabi"
+                            src="/images/statics/about-miftah-arabi.svg"
+                            alt="Illustration à propos de Miftah Arabi"
                             class="img-fluid about-image"
                         >
                     </div>
@@ -102,12 +102,14 @@ Plateforme d'apprentissage de la langue arabe pour francophones : cours clairs, 
                                     class="card-img-top lesson-card-image"
                                     src="{{ vich_uploader_asset(lesson, 'imageFile') | imagine_filter('visitor_lesson_thumb') }}"
                                     alt="{{ lesson.title }}"
+                                    style="width: 100%; height: 240px; object-fit: cover; display: block;"
                                 >
                             {% else %}
                                 <img
                                     class="card-img-top lesson-card-image"
                                     src="/images/statics/default-lesson-image.png"
                                     alt="{{ lesson.title }}"
+                                    style="width: 100%; height: 240px; object-fit: cover; display: block;"
                                 >
                             {% endif %}
 

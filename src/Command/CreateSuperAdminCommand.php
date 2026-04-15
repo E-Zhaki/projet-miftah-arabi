@@ -130,9 +130,9 @@ class CreateSuperAdminCommand extends Command
         foreach ($users as $user) {
             if (in_array('ROLE_SUPER_ADMIN', $user->getRoles())) {
                 $this->io->warning('The super admin already exists');
-            }
 
-            return Command::FAILURE;
+                return Command::FAILURE;
+            }
         }
 
         $this->entityManager->persist($superAdmin);

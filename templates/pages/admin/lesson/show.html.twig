@@ -11,7 +11,12 @@
     <div class="container">
         <div class="text-center">
             {% if lesson.image %}
-                <img class="img-fluid" src="{{ vich_uploader_asset(lesson, 'imageFile') }}" alt="{{ lesson.title }}">
+                <img
+                    class="img-fluid"
+                    src="{{ vich_uploader_asset(lesson, 'imageFile') }}"
+                    alt="{{ lesson.title }}"
+                    style="width: 100%; max-width: 720px; max-height: 420px; object-fit: cover; border-radius: 18px; display: inline-block;"
+                >
             {% endif %}
 
             <h1 class="text-center my-3 display-6">{{lesson.title}}</h1>
