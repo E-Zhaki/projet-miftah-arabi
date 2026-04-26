@@ -114,7 +114,7 @@ final class LessonController extends AbstractController
             $this->entityManager->remove($lesson);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'L\'article a été supprimé');
+            $this->addFlash('success', 'La leçon a été supprimée');
         }
 
         return $this->redirectToRoute('app_admin_lesson_index');
@@ -127,34 +127,34 @@ final class LessonController extends AbstractController
             return $this->redirectToRoute('app_admin_lesson_index');
         }
 
-        // Si l'article est non publié
+        // Si la leçon est non publiée
         if (!$lesson->isPublished()) {
-            // Publions-le
+            // Publions-la
             $lesson->setIsPublished(true);
 
             // Mettons à jour sa date de publication
             $lesson->setPublishedAt(new \DateTimeImmutable());
 
             // Générons le message flash correspondant
-            $this->addFlash('success', "L'article a été publié.");
+            $this->addFlash('success', "La leçon a été publiée.");
         } else {
             // Dans le cas contraire,
 
-            // Retirons l'article de la liste des publications
+            // Retirons la leçon de la liste des publications
             $lesson->setIsPublished(false);
 
             // Mettons à jour sa date de publication
             $lesson->setPublishedAt(null);
 
             // Générons le message flash correspondant
-            $this->addFlash('success', "L'article a été retiré de la liste des publications.");
+            $this->addFlash('success', "La leçon a été retirée de la liste des publications.");
         }
 
         // Demandons au manager des entités de sauvegarder les modifications apportées en base de données
         $this->entityManager->persist($lesson);
         $this->entityManager->flush();
 
-        // Rediriger l'administrateur vers la route menant à la page de listant les articles
+        // Rediriger l'administrateur vers la route menant à la page listant les leçons
         // Puis, arrêtons l'exécution du script.
         return $this->redirectToRoute('app_admin_lesson_index');
     }
