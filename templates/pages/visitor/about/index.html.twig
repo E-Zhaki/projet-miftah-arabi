@@ -1,0 +1,169 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}À propos | Miftah Arabi{% endblock %}
+
+{% block font_awesome %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+{% endblock %}
+
+{% block description %}
+Découvrez Miftah Arabi, une plateforme d'apprentissage de l'arabe pensée pour les francophones, progressive et accessible à tous les niveaux.
+{% endblock %}
+
+{% block keywords %}à propos, Miftah Arabi, plateforme arabe, apprendre l'arabe, francophones{% endblock %}
+
+{% block main %}
+
+    <section class="page-banner">
+        <div class="container text-center">
+            <h1 class="page-banner-title">À propos de Miftah Arabi</h1>
+        </div>
+    </section>
+
+    {# Présentation #}
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center">
+                    <div class="about-image-wrapper">
+                        <img
+                            src="/images/statics/about-miftah-arabi.svg"
+                            alt="Illustration à propos de Miftah Arabi"
+                            class="img-fluid about-image"
+                        >
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <span class="section-subtitle">Le projet</span>
+                    <h2 class="section-title mt-2">Qu'est-ce que Miftah Arabi ?</h2>
+
+                    <p class="section-text mt-4">
+                        Miftah Arabi — littéralement <strong>« la clé de l'arabe »</strong> — est une plateforme
+                        pensée pour les francophones qui souhaitent apprendre l'arabe de manière simple,
+                        progressive et motivante.
+                    </p>
+
+                    <p class="section-text">
+                        Le projet s'adresse aux débutants comme aux apprenants plus avancés, avec des contenus
+                        organisés par catégories, niveaux et thématiques.
+                    </p>
+
+                    <p class="section-text">
+                        L'objectif est de proposer une approche claire et pédagogique, en s'appuyant sur des leçons
+                        structurées et des ressources accessibles depuis tous les supports.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Mission #}
+    <section class="about-mission-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Nos valeurs</span>
+                <h2 class="section-title mt-2">Une mission, trois piliers</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="about-pillar-card text-center">
+                        <div class="about-pillar-icon">
+                            <i class="fa-solid fa-door-open"></i>
+                        </div>
+                        <h3 class="about-pillar-title">Accessibilité</h3>
+                        <p class="about-pillar-text">
+                            Des leçons gratuites, claires et disponibles à tout moment, depuis n'importe quel appareil.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-pillar-card text-center">
+                        <div class="about-pillar-icon">
+                            <i class="fa-solid fa-stairs"></i>
+                        </div>
+                        <h3 class="about-pillar-title">Progressivité</h3>
+                        <p class="about-pillar-text">
+                            Un parcours structuré du débutant à l'avancé, pour avancer à son propre rythme.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-pillar-card text-center">
+                        <div class="about-pillar-icon">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <h3 class="about-pillar-title">Pédagogie</h3>
+                        <p class="about-pillar-text">
+                            Une approche pensée pour les francophones, avec des explications simples et des exemples concrets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Approche / Niveaux #}
+    <section class="about-levels-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">L'approche</span>
+                <h2 class="section-title mt-2">Un parcours adapté à chaque niveau</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="about-level-card">
+                        <span class="about-level-badge about-level-debutant">Débutant</span>
+                        <p class="about-level-text mt-3">
+                            Découvrez l'alphabet arabe, la phonétique et les premières bases de la langue. Aucun prérequis nécessaire.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-level-card">
+                        <span class="about-level-badge about-level-intermediaire">Intermédiaire</span>
+                        <p class="about-level-text mt-3">
+                            Approfondissez votre grammaire, enrichissez votre vocabulaire et commencez à lire des textes courts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-level-card">
+                        <span class="about-level-badge about-level-avance">Avancé</span>
+                        <p class="about-level-text mt-3">
+                            Maîtrisez la syntaxe complexe, la lecture de textes littéraires et les subtilités de l'arabe littéraire.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# CTA #}
+    <section class="cta-section">
+        <div class="container text-center">
+            <span class="section-subtitle">Prêt à commencer ?</span>
+            <h2 class="section-title mt-2">Commencez votre apprentissage</h2>
+
+            <p class="section-text cta-text mt-4">
+                Parcourez les leçons disponibles ou contactez-moi pour toute question sur la plateforme.
+            </p>
+
+            <div class="d-flex justify-content-center flex-column flex-sm-row gap-3 mt-4">
+                <a href="{{ path('app_visitor_lesson_index') }}" class="btn btn-primary btn-ma">
+                    Voir les leçons
+                </a>
+                <a href="{{ path('app_visitor_contact_index') }}" class="btn btn-outline-primary btn-ma-outline">
+                    Me contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

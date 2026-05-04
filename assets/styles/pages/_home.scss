@@ -70,10 +70,19 @@
     margin-right: auto;
 }
 
+.page-banner-title {
+    font-family: "Playfair Display", serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+}
+
 .page-banner {
     background: linear-gradient(135deg, #8c6a43 0%, #c49b66 100%);
-    clip-path: polygon(0 0, 100% 0%, 100% 82%, 0% 100%);
-    padding: 5rem 0 6rem;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 95%, 0 75%);
+    padding: 4rem 0 7rem;
 }
 
 .contact-section {
@@ -118,6 +127,93 @@
 .contact-info-list i {
     color: $ma-primary;
     width: 20px;
+}
+
+.about-mission-section {
+    padding: 5rem 0;
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+.about-pillar-card {
+    background-color: $ma-white;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: $ma-box-shadow;
+    height: 100%;
+}
+
+.about-pillar-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba($ma-primary, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+
+    i {
+        font-size: 1.6rem;
+        color: $ma-primary;
+    }
+}
+
+.about-pillar-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $ma-dark;
+    margin-bottom: 0.75rem;
+}
+
+.about-pillar-text {
+    color: $ma-muted;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.about-levels-section {
+    padding: 5rem 0;
+}
+
+.about-level-card {
+    background-color: $ma-white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: $ma-box-shadow;
+    height: 100%;
+}
+
+.about-level-badge {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.about-level-debutant {
+    background-color: rgba($ma-accent, 0.18);
+    color: $ma-badge-category;
+    border: 1px solid rgba($ma-accent, 0.35);
+}
+
+.about-level-intermediaire {
+    background-color: rgba($ma-primary, 0.12);
+    color: $ma-primary;
+    border: 1px solid rgba($ma-primary, 0.3);
+}
+
+.about-level-avance {
+    background-color: rgba($ma-badge-level, 0.14);
+    color: $ma-badge-level;
+    border: 1px solid rgba($ma-badge-level, 0.35);
+}
+
+.about-level-text {
+    color: $ma-muted;
+    font-size: 0.95rem;
+    margin: 0;
 }
 
 @media screen and (max-width: 991px) {
