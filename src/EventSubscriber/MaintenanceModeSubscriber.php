@@ -24,6 +24,12 @@ class MaintenanceModeSubscriber implements EventSubscriberInterface
             return;
         }
 
+        $path = $event->getRequest()->getPathInfo();
+
+        if (str_starts_with($path, '/admin') || str_starts_with($path, '/login') || str_starts_with($path, '/logout')) {
+            return;
+        }
+
         $template = $this->twig->render('pages/maintenance_mode/index.html.twig');
 
         $response = new Response($template, Response::HTTP_SERVICE_UNAVAILABLE);
