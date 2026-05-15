@@ -26,7 +26,7 @@ class MaintenanceModeSubscriber implements EventSubscriberInterface
 
         $path = $event->getRequest()->getPathInfo();
 
-        if (str_starts_with($path, '/admin') || str_starts_with($path, '/login') || str_starts_with($path, '/logout')) {
+        if (str_starts_with($path, '/admin') || str_starts_with($path, '/connexion') || str_starts_with($path, '/deconnexion')) {
             return;
         }
 
